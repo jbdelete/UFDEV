@@ -1,0 +1,49 @@
+GIT SETUP
+git init
+git config --global init.defaultBranch main
+git branch -m main 
+git config --global user.name Jack
+git config --global user.email jb2ndr@ufl.edu
+verify
+	git config --global user.name 
+	git config --global user.email 
+
+Help
+	git -h 
+	git help <verb>
+	git <verb> --help
+	man git-<verb>imnit
+
+Dispay all settings
+	git config --list --show-origin
+	git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
+First commit
+	git add .
+	git add LICENSE
+	git commit -m 'Initial project version
+
+for linux 
+	git clone https://github.com/jbdelete/UFDEV.git
+clear screen
+ ctrl-L
+ reset
+List envirnment variables 
+ printenv 
+
+Set the matlab path
+
+echo 'export MATPATH="UFDEV/Latex' >> ~/.bashrc
+source ~/.bashrc
+echo $MATPATH
+
+env MATLABPATH=UFDEV/example
+ 
+General
+	echo $PWD
+	echo $HOME
+	echo $LANG
+	echo $SHELL
+	 
+	 
+	 
