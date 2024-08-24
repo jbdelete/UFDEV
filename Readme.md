@@ -10,7 +10,7 @@ This git repository is for 3-D thero-fluids simulation
   $ bash ufdev.sh\
 or\
   edit ~/.bashrc and insert the line:\
-export MATLABPATH="$HOME/UFDEV/Project/matlab/latex;$HOME/UFDEV/Project/matlab/MPS/common;$HOME/UFDEV/Project/MPS;$HOME/UFDEV/Project/matlab/main;$HOME/UFDEV/Project/matlab/MPS/main_rods'\
+export MATLABPATH="$HOME/UFDEV/Project/matlab/latex;$HOME/UFDEV/Project/matlab/MPS/common;$HOME/UFDEV/Project/MPS;$HOME/UFDEV/Project/matlab/main;$HOME/UFDEV/Project/matlab/MPS/main_rods'
 
 ## Installing on Windows
 1. Clone the the repository the first time.\
