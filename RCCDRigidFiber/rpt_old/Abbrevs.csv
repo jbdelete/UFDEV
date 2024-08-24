@@ -1,0 +1,54 @@
+AABB,Axis Aligned Bounding Box
+ACD,Approximate Collision Detection
+API,Applcation Programming Interface
+APS,Autonomous Particle System
+BHS,Barnes-Hut simulation
+BigAnn,Approximate Nearest Neighbor or Vector search problem. 
+BV,Bounding Volume
+CAD,Computer Aided Design
+CCD,Continuous Collison detection
+CD,Collision Detection 
+CFD,Computatiuonal Fluid Dynamics
+CGA,Computer Graphics Animation (entertainment)
+CGS,Computational Solid Geometry
+CMP,Computational Particle Mechanics
+CN,Coordination Number
+CPFD,Computational Particle Fluid Dynamics
+DCD,Discrete Collision Detection
+DEM,Discrete Element Method
+DOP,Depth of Penetration
+DPM,Discrete particle methods
+ECD,Exact Collision Detection
+ETA,Estimated Time of Arrival
+FLANN,Fast Library for Approximate Nearest Neighbors
+FMM,Fast Multipole Method
+GCD,Global Collision Detection
+GIS1M,Datasets for approximate nearest neighbor search
+GPU,Graphics Processing Unit
+GRAPE,GRAvity PipE  Software
+HGrid,Extension of Linked Cell
+HPC,High Perfoamnce Computing
+KNN,K-Nearest Neighbor
+LDI,Layered Depth Images
+LSDCD,Limit Space Decomposition Collision Detection
+MD,Molecular Dynamics
+MPM,Material Point Methods
+N,Number of Particles
+NNS,Nearest neighbor search
+OBB,Oriented Bounding Box
+PCCP,Parallelized by Contact Candidate Pairs
+PCS,Potentially Colliding Set
+PFEM,Particle Finite Element Method
+PRI-GC,Parallel Rectangle Intersection Algorithm
+PS,Particle System
+RI,Region of Interest
+SAP,Sort and Sweep
+SDF,Signed Distance Field
+S-DOP,Eight Direction Discrete Polytype
+SHFL,Kepler Shuffle Instruction
+SIFT1B,Datasets for approximate nearest neighbor search
+SIFT1M,Datasets for approximate nearest neighbor search
+SPH,Smoothed Particle Hydrodynamics
+spmp,Second per million particles
+SSBO,Shader Storage Buffer Object
+TOI,Time of Impact

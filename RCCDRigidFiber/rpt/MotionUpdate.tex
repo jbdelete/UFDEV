@@ -1,0 +1,9 @@
+% !TeX root = main.tex
+\subsection{Motion update} \label{mupt}
+
+The position of the particle cannot be updated in the compute kernel. If the particle position is changed there it changes the distance between particles, so that collisions may be missed. It could also have undefined consequences as particles may get caught in a collision loop. Therefore the position is changed in the graphics pipeline, by the vertex kernel, before the particle corners are located again in the PCS.
+
+
+
+
+

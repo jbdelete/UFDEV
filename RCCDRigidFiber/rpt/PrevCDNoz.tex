@@ -1,0 +1,28 @@
+% !TeX root = main.tex
+\onecolumn
+\section{Problem Specification- The Converging Diverging Nozzle} \label{cdnoz}
+
+The converging-diverging nozzle (CDN) is a passive device which exhibits a vast range of thermo-fluid behavior. Flow is substantially impacted by velocity magnitude but to a greater extent the velocity direction. Buffers form in the compressive section of the nozzle as a result of eddy's which choke the flow and which are far too complex and random to be described by smooth functions. Modeling the CDN also provides an opportunity to preview a number of RCCD features with Regions of Interest.
+
+The objective of this demonstration is to simulate flow trough a CD nozzle with particle-particle, particle-boundary collision detection, and resolution while extracting and reporting velocity angles without CPU-GPU data transmission.
+
+RCCD utilizes Regions of Interest (RI) to provide intersection detection where the phenomena resulting from the overlap can vary. Any modeled entity can be represented by many regions of interest. Most often the region is the \textit{hard sphere} (distance basis) boundary of a particle but can also be the boundary of an attraction or repulsion field. The RI can can represent a neighbor region to ascertain the number of close neighbors. RI can represent an additional region around a particle utilized for Time of Impact (TOI) calculations in \textit{soft-sphere} (time basis) adaptations allowing for higher speed simulations. Regions of interest can also represent \textit{boundary particles} which not only alert to boundaries, but contain additional information about them.
+
+This demonstration is about the computational mechanics of RCCD with RI more than it is about accurate thermo-fluid flow, so it incorporates some simplifying assumptions. The goal is to illustrate some kinetics of locally discrete \textit{autonomous} particles, how these might be implemented on the GPU, and how information can be extracted from the simulation without CPU-GPU data transfer.
+
+This demonstration is also a step forward in the development of this system and as such the dynamics are only as advanced as required to achieve the desired goals. The simplifying assumptions that have been implemented are as follows.
+
+The particles are hard-sphere and are also perfectly elastic where contact determination is made by distance. The time step and particle speed are 'hard-coded' to insure particles have time to react with each other and boundaries. As the approach matures the equations for speed limits will be derived and would be sourced from configuration files.
+
+The particle should be traveling at a high enough speed to completely rebound from interactions but not so fast that the particles \textit{tunnel}. The speed cannot be so slow that particles spend more than a few time steps in a collision but they must also have a buffer of time to spend in contact. In short, even though collision-resolution is elastic-hard-sphere there is a small buffer of time regions remain in contact. This allows the collision to remain conservative with some buffering. 
+
+Conservation is another simplification in that energy is not exchanged with other particles, borders, or heat. This has a significant impact on the range of flow that can be simulated since particles will always maintain velocity magnitude. Particles cannot slow by transferring kinetic energy into potential (internal) energy. If particle density is too high particles can be pushed outside boundaries, clog the nozzle, or they can bind and rotate. Bounded rotation is a highly desirable feature except in current instance where it can disrupt the expected flows. The result of these considerations is that the density of particles cannot be so high that particles do not have space to react but not so low that they do not accurately represent the expected flow.
+
+The simulation could be considered to represent the flow of spherical abrasive in sandblasting equipment and in the future these can be mixed with inelastic gaseous collisions.
+
+The code is written in C++, Vulkan, and Matlab. 
+
+
+
+
+

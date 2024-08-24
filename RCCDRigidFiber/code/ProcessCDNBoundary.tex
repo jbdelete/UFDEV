@@ -1,0 +1,66 @@
+
+\begin{figure}[h]
+\centering
+\lstset{style=gpucode,linewidth=6.5in,xleftmargin=0.25in}
+
+\begin{lstlisting}
+void ProcessCDBoundary(uint Findex, uint Bindex, in out vec3 OutVel)
+{
+
+	// Process this particle only if it is a particle, not a boundary particle.
+	// particle 
+	if(Bindex > bbound)
+		return;
+		
+		
+	float tol = 0.5;
+	vec3 InPosF = P[Findex].PosLoc.xyz;
+	vec3 InVelF	= P[Findex].VelRad.xyz;
+	vec3 InPosB;
+	vec3 InVelB;
+	
+	// The positon of the target boundary particle is stored in the velocity.
+	// If any of these components are non-zero then we are in a cell with a boundary.
+	if(P[Bindex].VelRad.x != 0.0 || P[Bindex].VelRad.y != 0.0 || P[Bindex].VelRad.z != 0.0 ) 
+	{
+		float xT = P[Findex].PosLoc.x;
+		float yT = P[Findex].PosLoc.y;
+		float zT = P[Findex].PosLoc.z;
+		// Get the boundary radius at this point.
+		float radius = GetCDRadius(P[Findex].PosLoc.z);
+		// Square it.
+		float dsq = radius*radius;
+	    // Get the squared position of the source particle.
+		float yr = abs(yT-CENTER)+2*P[Findex].PosLoc.w;
+		float xr = abs(xT-CENTER)+2*P[Findex].PosLoc.w;
+		float psq = ((yr*yr)+(xr*xr));	
+	
+		// If we are within the squared radius of the bpoundary process it.
+		if(psq >= dsq && P[Findex].bcs[0].clflg == 0)
+		{
+			
+			newVel = CalcBoundaryVel(Findex,InPosF,InVelF,CENTER);
+			// Set the new velocity.
+			P[Findex].VelRad.xyz = newVel;
+			// Set the "in collsion" flag.
+			P[Findex].bcs[0].clflg = 1;
+		}
+		else
+		{	// Give it 6 frames to get out of range of the bouddary so it does not
+			// repeat the collsion. We could 'impulse' out of the boudary but then we 
+			// may knock another particle out of the boudary. THis is hardcoded for this 
+			// demonstration only.
+			if(P[Findex].bcs[0].clflg++ == 6)
+				P[Findex].bcs[0].clflg = 0;
+		}
+
+	}
+	
+}
+
+\end{lstlisting}
+
+
+\caption[Benchset test configuration file]{The code for \texttt{ProcessCDBoundary(...)} which performs a distance calculation for a boundary particle. }
+\label{fig:ProcessCDNBoundary}
+\end{figure}

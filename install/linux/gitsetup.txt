@@ -25,6 +25,13 @@ First commit
 
 for linux 
 	git clone https://github.com/jbdelete/UFDEV.git
+	
+Pull 
+	git pull origin
+	git fetch https://github.com/jbdelete/UFDEV.git
+	git fetch origin
+	git remote show origin
+	
 clear screen
  ctrl-L
  reset
@@ -39,6 +46,8 @@ echo $MATPATH
 
 env MATLABPATH=UFDEV/example
  
+git status 
+
 General
 	echo $PWD
 	echo $HOME
@@ -46,4 +55,7 @@ General
 	echo $SHELL
 	 
 	 
-	 
+Create a bash script
+cat >ufdev
+chmod u+x ufdev
+bask ufdev

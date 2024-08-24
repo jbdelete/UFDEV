@@ -1,0 +1,62 @@
+%!TeX root = main.tex
+\section{Benchmarking - Verification} \label{benchver}
+
+Reports of image space methods for particle collision detection do not provide common benchmarking and detailed verification making it difficult or impossible to compare methods. To rectify this issue a common benchmarking methods referred to as the maximum machine render rate which can be applied to any particle collision detection method. An application called \gen{} generates benchmarking data and is "light weight" in that it avoids transmission of very large datasets. \ver{} is another application provides that serves to verify the number of particles and collisions in datasets. Further, \ver{} includes testing algorithms such as location rounding and array indexing. Further a suite of MatLab scripts perform analysis on the collected data and export plots, tables, and images in latex format. The following details the verification process beginning with the maximum machine render rate. 
+
+\subsection{MMRR}
+
+The testing metric will be based on what we refer to as the \textit{maximum machine render rate} (\mmrr{}). This rate is based on the time it takes a CPU-GPU combination to render a simple multicolored non-index drawn triangle with vertex information embedded in the vertex stage[]. The test is run for one minute recording the frame-rate every second then taking the mean of the 60 timings. The \mmrr{} software used here is a simple Vulkan application based on the \textit{Willams triangle}[].
+
+The \textit{maximum application render rate} (\marr{}) is the the mean of the one minute timings for the application divided by the \mmrr{}. The \marr{} is then the fraction of time it takes to render a frame by an application relative to the maximum rendering speeds of the CPU-GPU combination. This application rate ratio (\arr{}) is intended to provide a more meaningful metric and to provide portability across various hardware configurations for particle collision only.
+
+A number of studies will be required to fully test the performance and reliability of this method which claims to compute the exact number of collisions. These are configured to perform a number of standard tests. The \textit{particle density} tests the number of particles that occupy a single cell. The \textit{collision density} tests the a varying number of collisions relative to a fixed number of particles. The \textit{particle volume} tests an increwasing number of particles at a constant particle and collision density.
+
+\textbf{Particle volume}
+\begin{enumerate}
+\item Number of particles:variable
+\item Particle cell density:fixed
+\item Number of collisions:fixed
+\end{enumerate}
+
+\textbf{Particle density}
+\begin{enumerate}
+\item Number of particles:variable
+\item Particle cell density:variable
+\item Number of collisions:fixed
+\end{enumerate}
+
+\textbf{Collision density}
+\begin{enumerate}
+\item Number of particles:fixed
+\item Particle cell density:fixed
+\item Number of collisions:variable
+\end{enumerate}
+
+There are situations where particle density varies greatly over the rounded space. For instance a group of cells may be have a high density of particles while other particles are spread in cells far away, and where some cells do not contain any particles. The \textit{spread test} should show high performance since if a cell does not contain a particle the cell is never touched. 
+
+The overall process entails generating data, verifying that data, running the application against that data, and finally verifying that the application is actually detecting the parameters dictated by the datasets.
+
+\subsection{Generate Benchmark-Verification Data}
+
+
+\input{../images/BenchConfigFile.tex}
+
+Fig. \ref{fig:BenchConfigFile} shows the format of the \textit{benchmark configuration file} which is read by \gen{} to produce datasets. The \texttt{wx,wy,wz} columns configure the work-groups in the compute kernel (see \figo{CompWrkGp}).  The \texttt{dx,dy,dz} columns configure \texttt{vkSubmit(..)} dimensions. The \texttt{tot} column provides the number of particles to be generated. The \texttt{sel} column selects that line for generation. The \texttt{cols} column configures the length of the second dimension of the particle cell hash table which must be equal to the number of particles that can occupy a cell.  The \texttt{cdens} column configures the percentage of particles that will be colliding. The \texttt{radius} column provides the radius of the particles which can be varied to produce different particle cell density. 
+
+\gen reads this file line by line, generates the datasets and a \textit{test configuration file}. The test configuration file provides the side length of the cell array which is square int the case of bench marking. The file also provides the particles per cell (cell density), the total number of particles (\texttt{pcount}), the number of collisions (\texttt{colcount}), and the binary file containing the particle data (\texttt{datafile}). For each run the \app{} reports the results which are written to the file name in \texttt{aprFile}. The \texttt{density} field provides collision density as a percentage and \texttt{ColArySize} is the particle cell hash table cell length. 
+
+\input{../code/tstfile.tex}
+
+\subsection{Run Benchmark data}
+
+The \app{} is run in verification mode where it iterates over each benchmark file in a loop. \app{} reads the data from each configuration file, loads the benchmark data, creates a results file, and runs the test. Each test runs for 60 seconds recording the number of particles processed, the number of collisions detected, and the frame rate for each second. Fig. \ref{fig:ReportFile} illustrates the format of the report file.  The \texttt{time}, \texttt{fps},  \texttt{spf} fields provide the time in second of the frame, the framemrate and time per frame. The \texttt{expectedp}, \texttt{loadedp},  \texttt{shadercomp},  \texttt{shadergrp}, report the number of particles generated by \gen{}, the number of particles loaded by \app{}, the number of particles processed by the compute and vertex kernels respectively. Any mismatch of these fields results in the creation of an error file which contains the error data. The \texttt{expectedc}, \texttt{shaderc}, reports the number of collisions expected from \gen{} and the number of collisions actually processed by the compute kernel. If the collsions expected are not equal to the number of collisions processed an error file is written. The \texttt{threadcount} reports the number of threads launched by the compute kernal which allows tuning of the workgroup parameters. 
+
+Each set of data can be run with only the graphics pipeline or with both the graphics and compute pipeline active in order to determine the performance of these separately (see \figo{Perf_VCUBE02}).
+
+
+\input{../images/ReportFile.tex}
+
+
+\subsection{Analyze the data}
+
+Matlab scripts (\mat{}) is run over the results data collecting parameters and checking for errors. This data is coalesce into frame rate v number of particles, time per frame versus number of particles at the same collision density and frame rate versus constant number of particles over varying density, \Figo{Perf_VCUBE01}, \Figo{Perf_VCUBE02}, and result tables \ref{tab:rccdPerfData1}, \ref{tab:rccdPerfData3}, and \ref{tab:rccdPerfData2}.

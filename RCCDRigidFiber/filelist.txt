@@ -1,0 +1,9 @@
+rpt
+imgperm
+code
+plots
+images
+equations
+bib
+bst
+tables

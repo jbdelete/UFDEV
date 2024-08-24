@@ -1,0 +1,62 @@
+
+\begin{figure}[h]
+\centering
+\lstset{style=gpucode,linewidth=6.5in,xleftmargin=0.25in}
+
+\begin{lstlisting}
+uint ChangePosCDNoz(uint index)	
+{		
+	
+	// There was an error with this particle do not process it anymore
+	if(P[0].PosLoc.w == 1.0)
+		return 1;
+
+	// Get radius squared to check to see if the
+	// particle has violated a boundary
+	float radius = GetCDRadius(P[index].PosLoc.z);
+	
+	float dsq = radius*radius;
+	float yT = P[index].PosLoc.y;
+	float xT = P[index].PosLoc.x;
+	float yr = (yT-CENTER);
+	float xr = (xT-CENTER);
+	float psq = ((yr*yr)+(xr*xr));	
+	
+	// If the positon of the particle is beyond a boundary
+	// and it has not already been reported  disable it
+	if(psq > dsq && uint(P[index].prvvel.w) == 0)
+	{
+		P[index].prvvel.w = 1.0;
+		return 1;
+	}
+	
+	// Calulate change in position if we are configured for motion,
+	// and the particle is active, and the stop flag is not engaged
+	if(doMotion == 1 && uint(P[index].prvvel.w) == 0 && uint(ShaderFlags.StopFlg) == 0)
+		P[index].PosLoc.xyz += P[index].VelRad.xyz*dt;
+	
+	
+	// Calculate the yz angle
+	vec2 angnorm = normalize(P[index].VelRad.zy);			
+	float angletmp = atan2piPt(angnorm); 
+	// HSV Normalize and assign to particle angle variable
+	P[index].FrcAng.w = atan2piPt(angnorm)/(2*PI);
+
+	// Can't have nan's, abort simulation.
+	if(isnan(P[index].FrcAng.w) || isnan(P[index].VelRad.x) || isnan(P[index].VelRad.y) || isnan(P[index].VelRad.z))
+	{
+		collIn.ErrorReturn = 7;
+		collIn.particleNumber = index;
+	}
+	// Stop once the particle is beyond the nozzle
+	if(P[index].PosLoc.z > 64.4)
+		P[index].prvvel.w = 1.0;
+	return 0;
+	
+}	 
+\end{lstlisting}
+
+
+\caption[Benchset test configuration file]{The code for \texttt{ChangePosCDNoz(...)} which calculates displacement after the PCS has been evaluated for collisions in the compute kernel. }
+\label{fig:ChangePosCDNoz}
+\end{figure}

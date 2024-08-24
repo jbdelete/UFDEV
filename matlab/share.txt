@@ -1,2 +1,0 @@
-sasherif@ufl.edu,jorg@cise.ufl.edu,jorg.peters@gmail.com
-sasherif@ufl.edu;jorg@cise.ufl.edu;jorg.peters@gmail.com

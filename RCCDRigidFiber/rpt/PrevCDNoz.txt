@@ -1,0 +1,2 @@
+% !TeX root = main.tex
+\section{A Preview - The Convering Diverging Nozzle} \label{cdnoz}

@@ -1,0 +1,139 @@
+% *** LANGUAGE PACKAGES ***
+\usepackage[english]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}		% Great font
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[useregional]{datetime2}		% To use several date formats
+\usepackage{lipsum}		% For dummy text
+
+% *** GEOMETRY PACKAGES ***
+\usepackage{geometry}
+\geometry{left=25mm,
+	right=25mm,
+	top=35mm,
+	bottom=30mm,
+	headheight = 35 mm
+} 
+\usepackage{lastpage}
+
+% *** COLOR PACKAGES ***
+\usepackage[table]{xcolor}		% "table" for table rowcolors
+% Color definitiions
+\definecolor{blue}{RGB}{0,89,140}
+\definecolor{gray}{RGB}{242,242,242}
+\definecolor{grayblack}{RGB}{50,50,50}
+\definecolor{blue2}{RGB}{10,62,157}
+\definecolor{red2}{RGB}{173,17,0}
+\definecolor{gray2}{RGB}{230,230,230}
+
+% *** HEADING AND FOOTER ***
+\usepackage{fancyhdr} % For heading and footers
+\renewcommand{\headrulewidth}{0.5pt}
+\let\oldheadrule\headrule% Copy \headrule into \oldheadrule
+\renewcommand{\headrule}{\color{blue}\oldheadrule}% Add colour to \headrule
+\renewcommand{\footrulewidth}{0.5pt} 
+\let\oldfootrule\footrule%
+\renewcommand{\footrule}{\color{blue}\oldfootrule}% Add colour to \headrule
+\pagestyle{fancy}                    % Default page style
+\cfoot{}                             % Empty foot center  
+\lhead{\includegraphics[width=0.15\textwidth]{Gatorlogo}}     
+\chead{\textcolor{grayblack}{\author}}
+\rhead{\textcolor{grayblack}{\DTMsetstyle{ddmmyyyy} \date}}
+\lfoot{\textcolor{grayblack}{\small \title}}        
+\rfoot{\textcolor{grayblack}{\small Page. \thepage\ - \pageref*{LastPage}}} 			     % Total of pages
+
+% *** GRAPHICS RELATED PACKAGES ***
+\usepackage{graphicx}       % Loading images
+\usepackage{float}          % Figures inside minipages
+\usepackage{wrapfig}		% Text wrapped around figure
+\usepackage{tikz}			% Used to load cover figure
+\usepackage[hypcap,font={color=grayblack}]{caption} % used to style the captions
+\usepackage{subcaption} 	% For subfigures
+\usepackage{overpic}		% To add text over figures
+\graphicspath{{../images}}  % Figures relative directory
+
+% *** TITLE PACKAGES ***
+\usepackage{titlesec}
+\titleformat{\section}{\color{blue}\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\color{blue}\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\usepackage{setspace} % Para ajustar la separación entre líneas del documento
+\usepackage{xfrac}
+% *** TABLE PACKAGES ***
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{footnote} % To have footnotes inside tables
+\usepackage{array}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage{xurl} % Lo cargo antes de hyperref, porque ese ya lo carga también.
+\urlstyle{sf} % Estilo de los url pasa a Sans Serif.
+
+\usepackage[colorlinks,
+citecolor=cyan,
+urlcolor=blue,
+linkcolor=blue,
+citebordercolor={0 0 1},
+urlbordercolor={0 1 1},
+linktocpage,
+hyperfootnotes=true
+]{hyperref}
+
+
+%%% EQUATIONS %%%
+\usepackage{mathtools}
+%\usepackage[numbers]{natbib}
+\usepackage[square,numbers]{natbib}
+%\setReferenceFile{../bib/biblio}{../bst/IEEEtranSNLink}%
+\bibliographystyle{../bst/IEEEtranSNLink}
+%\usepackage[
+%backend=biber,	% Backend para las referencias (no modificar)
+%style=IEEEtranSN, 		% Estilo APA de bibliografía
+%sortcites,		% Para tener ordenadas las citas
+%natbib=true,	% Utiliza natbib
+%url=true, 		% Para que aparezca o no la url
+%doi=true,		% Para que aparezca o no el DOI
+%isbn=false 		% Para que aparezca o no el ISBN
+%]{biblatex}
+%\addbibresource{../bib/biblio.bib}
+\definecolor{Abstractcolor}{rgb}{0,0.6,0}
+\definecolor{Commentcolor}{rgb}{0.74,0.11,0.16}
+\definecolor{Objectcolor}{rgb}{0.6,0.0,0.4}
+\newcommand{\ctxt}[1]{\textcolor{Commentcolor}{\\ \small QUOTE: #1 :ENDQUOTE \\}}
+\newcommand{\q}[1]{\textcolor{red}{#1}}
+\newcommand{\ncite}[1]{\textcolor{red}{CITE:#1}}
+\newcommand{\todo}[1]{\textcolor{blue}{TODO:#1}}
+\newcommand{\intendThe }[1]{\textcolor{blue}{GOAL:#1}}
+\newcommand{\dens}{\mathfrak{m}}
+
+%% JMB MY STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{Abstractcolor}{rgb}{0,0.6,0}
+\definecolor{Commentcolor}{rgb}{0.74,0.11,0.16}
+\definecolor{Objectcolor}{rgb}{0.6,0.0,0.4}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mybk}{rgb}{0.95,0.95,0.95}
+
+\newcommand{\algo}[1]{Fig. #1}
+\newcommand{\algn}[2]{Fig. #1, line #2}
+\newcommand{\Algo}[1]{Fig. #1}
+\newcommand{\Algn}[2]{Fig #1, line #2}
+\newcommand{\figo}[1]{fig. \ref{fig:#1}}
+\newcommand{\Figo}[1]{Fig. \ref{fig:#1}}
+\newcommand{\figob}[2]{fig. \ref{fig:#1}-(#2)}
+\newcommand{\Figob}[2]{Fig. \ref{fig:#1}-(#2)}
+\newcommand{\app}{\textbf{\textit{rccdApp}}}
+\newcommand{\ver}{\textit{\textbf{verApp}}}
+\newcommand{\gen}{\textit{\textbf{genApp}}}
+\newcommand{\mmrr}{\textit{\textbf{mmrr}}}
+\newcommand{\marr}{\textit{\textbf{marr}}}
+\newcommand{\arr}{\textit{\textbf{arr}}}
+\newcommand{\mat}{\textit{\textbf{matApp}}}
+\usepackage{listings}
+\usepackage{verbatim}
+\include{../code/code_gpu.tex}
+\include{../code/code_C.tex}
+
+\lstnewenvironment{queryl}[1][] 
+ {\lstset{frame=shadowbox,escapechar=`,linewidth=8cm, #1}}
+ {}

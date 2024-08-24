@@ -1,0 +1,62 @@
+
+\begin{figure}[h]
+\centering
+\lstset{style=gpucode,linewidth=6.5in,xleftmargin=0.25in}
+
+\begin{lstlisting}
+const float sec24slp = 0.1f;
+
+const float secx1_beg = 1.0f;
+const float secx1_end = 5.0f;
+const float secz1     = 10.0f;
+
+const float secx2_beg = 5.0f;
+const float secx2_end = 25.0f;
+const float secz2     = 10.0f;
+
+const float secx3_beg = 25.0f;
+const float secx3_end = 30.0f;
+const float secz3     = 8.1f;
+
+
+const float secx4_beg = 30.0f;
+const float secx4_end = 50.0f;
+const float secz4     = 10.0f;
+
+const float secx5_beg = 50.0f;
+const float secz5     = 10.0f;
+
+float GetCDRadius(float Z)
+{
+	// SEC1 flat return negative of radius
+	if(Z >= secx1_beg && Z <= secx1_end)
+       return -secz1;
+	   
+	// SEC2 slope down
+	// 5.0 included to less than 25
+	else if(Z > secx1_end && Z <= secx2_end)
+	   return secz2+(Z-secx2_beg)*(-sec24slp);
+
+	// SEC3 flat return negative of radius
+	else if(Z > secx2_end && Z <= secx3_end)
+       return -secz3;
+	   
+	// SEC4 slope up
+	else if(Z > secx3_end && Z <= secx4_end)
+		return secz3+(Z-secx3_end)*(sec24slp);
+		
+	// SEC5 flat
+	else if(Z > secx4_end)
+        return -secz5;  
+		
+	else
+		return 0;
+
+	return 0;
+}
+\end{lstlisting}
+
+
+\caption[Benchset test configuration file]{The code for \texttt{GetCDRadius(...)} which returns the radius of the nozzle at any point along its z-length.}
+\label{fig:GetCDRadius}
+\end{figure}

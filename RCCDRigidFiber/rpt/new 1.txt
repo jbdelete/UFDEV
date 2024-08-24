@@ -1,0 +1,9 @@
+PARTICLE_GRAPHICS_AND_COMPUTE_ONLY;NDEBUG;GLFW_INCLUDE_VULKAN;VK_VERSION_1_3;YY_USE_CONST;WIN32;WIN64;YY_NO_UNISTD_H;LIBCONFIG_EXPORTS;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);
+
+PARTICLE_BOUNDARY;GLFW_INCLUDE_VULKAN;VK_VERSION_1_3;YY_NO_UNISTD_H;LIBCONFIG_EXPORTS;WIN64;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)
+
+
+Shlwapi.lib;..\..\..\..\RCCD3rdPty\glfw-master\build\src\Debug\glfw3.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\glslc\Debug\glslc.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\libshaderc_util\Debug\shaderc_util.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\libshaderc\Debug\shaderc.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\third_party\glslang\glslang\Debug\glslang.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\third_party\glslang\SPIRV\Debug\SPIRVd.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\third_party\spirv-tools\source\opt\Debug\SPIRV-Tools-opt.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\third_party\spirv-tools\source\Debug\SPIRV-Tools.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\third_party\glslang\glslang\Debug\MachineIndependentd.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\third_party\glslang\glslang\OSDependent\Windows\Debug\OSDependentd.lib;..\..\..\..\RCCD3rdPty\shaderc-main\build_vcc\third_party\glslang\glslang\Debug\GenericCodeGend.lib;$(VULKAN_SDK)\Lib\vulkan-1.lib;%(AdditionalDependencies)
+
+
+ShLwApi.Lib;glfw3.lib;vulkan-1.lib;%(AdditionalDependencies)

@@ -1,0 +1,59 @@
+
+\begin{figure}[h]
+\centering
+\lstset{style=gpucode,linewidth=6.5in,xleftmargin=0.25in}
+
+\begin{lstlisting}
+///..........
+	for(uint ii = 0; ii < 8;ii++)
+	{
+		// Set location to local variable.
+		uint loc = P[Findex].zlink[ii].ploc;
+
+		// If the lcation is not zero..
+		if (loc != 0)
+		{
+			// Use the linked particle location to index into the particle-cell hash table 
+			// And compare this particle with all of the paricles at this location.
+			for(uint jj = 0; jj< MAX_ARY;jj++)
+			{
+				Tindex = clink[loc].idx[jj];
+
+				// If the linked particle is zero teminate
+				if(Tindex == 0)
+					break;
+				
+				
+					
+				
+				for(uint ii = 0; ii <= dupcnt && dupcnt < 256; ii++)
+				{
+					if(duplst[ii] == Tindex)
+					{
+						dupflg = true;
+						break;
+					}
+					if(duplst[ii] == 0)
+					{
+						dupflg = false;
+						duplst[ii] == Tindex;
+						dupcnt = ii;
+						break;
+					}
+				}
+										
+				if(dupflg == false)						
+				{
+					ProcessCDBoundary(Findex,Tindex,OutVel);
+					ProcessParticleContact(ii,Findex, Tindex, OutVel);
+				}
+			}
+		}
+	}
+///..........
+\end{lstlisting}
+
+
+\caption[Benchset test configuration file]{A snippet of the compute kernel which processes the PCS }
+\label{fig:ParticleComp}
+\end{figure}

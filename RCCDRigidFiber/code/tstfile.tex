@@ -1,0 +1,36 @@
+
+\begin{figure}
+\centering
+\lstset{style=gpucode,linewidth=6.5in,xleftmargin=0.25in}
+
+\begin{lstlisting}
+index = 0;
+Sidelen = 64;
+PipeCenter = 11.0000;
+PipeRadius = 10.0000;
+CellAryW = 20;
+CellAryH = 20;
+CellAryL = 64;
+radius = 0.2;
+PartPerCell = 8;
+pcount = 5304;
+colcount = 0;
+dataFile = "J:/RCCDData/perfdataM/CDNozBoundaryTest.bin";
+aprFile = "J:/RCCDData/perfdataM/CDNozBoundaryTest.csv";
+density = 0.0;
+pdensity = 0.0;
+dispatchx =  5305;
+dispatchy = 1;
+dispatchz = 1;
+workGroupsx = 1;
+workGroupsy = 1;
+workGroupsz = 1;
+ColArySize = 128;
+MaxSingleCollisions = 8;
+
+\end{lstlisting}
+
+
+\caption[Benchset test configuration file]{The benchset test configuration file provides information on each test to be run by \app{} }
+\label{fig:tstfile}
+\end{figure}

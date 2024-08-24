@@ -1,0 +1,38 @@
+%!TeX root = main.tex
+\section{Report of 2024 05 26}
+
+I have spent the last couple of weeks solidifying the benchmarking/verification process. Section \ref{benchver}  is a full write up. It is probably important to read this since it shows - 1) The system has been tested in detail for accuracy, 2) the common benchmarking and reporting scheme. This will help to forstall any embarrassment over performance claims.
+
+I have tested the system in three parts. One with no compute pipeline and one with both the compute and vertex pipelines active. The compute pipeline performance is the difference between the total and the graphics. Table \ref{tab:rccdPerfData1} is the graphics pipeline performance, table \ref{tab:rccdPerfData3} is the compute performance, and table  \ref{tab:rccdPerfData2} is the combined performance.
+
+This is also reflected in \figo{Perf_VCUBE02} where all three are plotted. It appears that both the compute and graphics pipelines are sub-linear (do you agree?).
+I investigated the wide variance with NSight Systems which allows me to see the performance of the CPU and GPU together. The red band in \figo{nsight001} is called a \textit{stutter} which occurs allot. NSight reports on the cause illustrated in \figo{nsight002} and it appears if this is fixed the frame rates will have far less variance. 
+The message means the CPU is taking a longer time to build and send a command package to the GPU than the GPU time it takes to process the commands.
+
+\input{../images/nsight001.tex}
+\input{../images/nsight002.tex}
+
+\input{../tables/rccdPerfData1.tex}
+\input{../tables/rccdPerfData3.tex}
+\input{../tables/rccdPerfData2.tex}
+
+\newpage
+\clearpage
+
+\input{../plots/Perf_VCUBE02.tex}
+\input{../plots/Perf_VCUBE01.tex}
+%\newpage
+%\input{../tables/V-Cube Performance Data.tex}
+%\newpage
+%\input{../tables/V-Cube Performance Data001.tex}
+%\newpage
+%\input{../plots/Perf_VCUBE02.tex}
+%\input{../plots/Perf_VCUBE01.tex}
+
+%\input{../plots/Perf_RCPCD_Density001.tex}
+
+%\input{../plots/Perf_VCUBE03.tex}
+
+%\input{../plots/Perf_VCUBE04.tex}
+%Fig. \ref{fig:Perf_RCPCD_Density001}
+

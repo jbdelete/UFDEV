@@ -1,0 +1,23 @@
+This is BibTeX, Version 0.99d (MiKTeX 24.1)
+The top-level auxiliary file: main.aux
+The style file: ../bst/IEEEtranSNLink.bst
+Illegal, another \bibstyle command---line 6 of file main.aux
+ : \bibstyle
+ :          {../bst/IEEEtranSNLink}
+I'm skipping whatever remains of this command
+Database file #1: ../bib/Referencesdoi.bib
+Illegal end of database file---line 4456 of file ../bib/Referencesdoi.bib
+ :   file = {J:\sandboxR9\Thesis\zotero\storage\E25H2RJV\Zou et al. - 2017 - Collision detection for virtual environment using .pdf}
+ :                                                                                                                                  
+I'm skipping whatever remains of this entry
+-- IEEEtranSN.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Sorting Natbib version - not for normal IEEE work.
+Warning--empty journal in bell2024MST
+Warning--empty year in bell2024MST
+Warning--empty journal in Bellpaper1
+Warning--empty year in Bellpaper1
+
+Done.
+(There were 2 error messages)

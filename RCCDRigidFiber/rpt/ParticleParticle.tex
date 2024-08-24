@@ -1,0 +1,34 @@
+% !TeX root = main.tex
+\newpage
+\clearpage
+\section{Numerical methods and experimental setup } 
+
+This section covers the theory of 3-d collisions between particles and particles with boundaries. These collisions change velocity so the final section discusses position update.
+
+\subsection{Particle-Particle Collision Resolution} \label{pph}
+
+Particle-particle collision is a vast subject, but as referenced earlier, these collisions are elastic. Although not very realistic, these collisions require only an equation for momentum exchange in three dimensions. Rounded cell collision detection processes collisions for each particle, not each particle pair. Therefore, each particle in a collision is resolved separately. This requires the same calculation twice. The particle being processed, and all particles against which it is being processed. The particle being processed is called the \textit{source particle} and the particle, or particles, against which it is being compared are called the \textit{target particles}.
+
+The momentum equations use the dot product to project velocity onto the the line of impact, which is the tangent plane bisecting the line between the particle centers, as illustrated in Fig. \ref{fig:ParticleParticle}.
+\input{../images/ParticleParticle.tex}
+
+Equations (\ref{eqn:calcmom001}-\ref{eqn:calcmom004}) calculate parameters for the source particle.
+\input{../equations/calcmom001.tex}
+\input{../equations/calcmom002.tex}
+\input{../equations/calcmom003.tex}
+\input{../equations/calcmom004.tex}
+
+Equations (\ref{eqn:calcmom005}-\ref{eqn:calcmom008}) calculate parameters for the target particle.
+\input{../equations/calcmom005.tex}
+\input{../equations/calcmom006.tex}
+\input{../equations/calcmom007.tex}
+\input{../equations/calcmom008.tex}
+
+The velocity for the source particle is calculated as in \ref{eqn:calcmom009}.
+\input{../equations/calcmom009.tex}
+
+Collision resolution is processed in the compute pipeline. The \textit{potentially colliding set} is delivered to the compute kernel by the graphics pipeline. The code iterates over the eight corners of the \textit{axis aligned bounding box} (AABB) encasing the particle sphere, seeking other particle corners that occupy the same cell. The code traverses the length of the array which contains all of the particles in the cell. When a particle is found, it is registered in a duplicates array, since two or more particle corners can span the same cells. If it is not a duplicate the particle resolution is calculated.
+
+Fig. \ref{fig:CalcMomentum} in section \ref{pbcrc}, shows this code in glsl a language that is 'built' for multidimensional calculus. For example, like templates in C++, variables types, like arrays and matrices, can be mulitplied, divided, added, subtracted, compared, etc, just like scalars. The GPU is also designed to process these type very efficiently.
+
+The code for particle-particle collisions is detailed in the Appendix section \ref{ppcrc}

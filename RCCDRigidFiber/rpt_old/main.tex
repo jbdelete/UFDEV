@@ -1,0 +1,42 @@
+% MIT License
+
+% Copyright (c) 2022 Mihdí Caballero
+
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% Based on article class and in spanish language by default
+\documentclass[a4paper,12pt,english]{article}
+% Load all packages and settings in the preamble 
+\input{packages}
+\usepackage{placeins}
+\setstretch{1.25}
+
+\begin{document}
+
+	% Load initial settings for the document
+	\input{initial}	
+	% Cover page
+	\input{00_cover_page}
+	\newpage
+	\tableofcontents      
+	\newpage
+	\input{2024_05_26}
+	\newpage
+%	\input{2024_05_02}
+%	\newpage
+	\input{04_methodology}
+%	\newpage
+%	\input{03_chapters}
+%	\newpage	
+%	\input{04_chapters}
+%	\newpage
+%	\input{05_chapters}
+	% Bibliography
+	\newpage
+	%\bibliography{../bib/bibliodoi}
+\end{document}

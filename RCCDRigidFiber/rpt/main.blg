@@ -1,0 +1,75 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 22 items.
+The style file: ../bst/IEEEtranSNLink.bst
+Illegal, another \bibstyle command---line 6 of file main.aux
+ : \bibstyle
+ :          {../bst/IEEEtranSNLink}
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: ../bib/Referencesdoi.bib
+Illegal end of database file---line 4456 of file ../bib/Referencesdoi.bib
+ :   file = {J:\sandboxR9\Thesis\zotero\storage\E25H2RJV\Zou et al. - 2017 - Collision detection for virtual environment using .pdf}
+ :                                                                                                                                  
+I'm skipping whatever remains of this entry
+-- IEEEtranSN.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Sorting Natbib version - not for normal IEEE work.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Warning--empty journal in bell2024MST
+Warning--empty year in bell2024MST
+Warning--empty journal in Bellpaper1
+Warning--empty year in Bellpaper1
+
+Done.
+You've used 7 entries,
+            5221 wiz_defined-function locations,
+            1059 strings with 10611 characters,
+and the built_in function-call counts, 5856 in all, are:
+= -- 508
+> -- 262
+< -- 20
++ -- 104
+- -- 72
+* -- 377
+:= -- 913
+add.period$ -- 13
+call.type$ -- 7
+change.case$ -- 39
+chr.to.int$ -- 37
+cite$ -- 18
+duplicate$ -- 354
+empty$ -- 402
+format.name$ -- 86
+if$ -- 1263
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 62
+newline$ -- 55
+num.names$ -- 30
+pop$ -- 202
+preamble$ -- 1
+purify$ -- 31
+quote$ -- 2
+skip$ -- 390
+stack$ -- 0
+substring$ -- 100
+swap$ -- 227
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 6
+type$ -- 130
+warning$ -- 4
+while$ -- 26
+width$ -- 0
+write$ -- 106
+(There were 2 error messages)

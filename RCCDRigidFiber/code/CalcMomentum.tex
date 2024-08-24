@@ -1,0 +1,46 @@
+
+\begin{figure}[h]
+\centering
+\lstset{style=gpucode,linewidth=6.in,xleftmargin=0.25in}
+
+\begin{lstlisting}
+uint CalcMomentum(	uint Findex, 			// Source particle index
+					float Fm, 			    // Source mass		
+					float Ft,				// Target mass
+					vec3 InPosF,			// Source position
+					vec3 InPosT,			// Target position
+					vec3 InVelF,			// Source velocity
+					vec3 InVelT,			// Target velocity
+					in out vec3 newVel)		// Returned new velocity
+{
+
+	float m1, m2, x1, x2;
+	vec3 v1temp, v1, v2, v1x, v2x, v1y, v2y; 
+	vec3 x = InPosT-InPosF;
+
+	//Process source particle 
+	x = normalize(x);
+	v1 = InVelF;
+	x1 = dot(x,v1);
+	v1x = x * x1;
+	v1y = v1 - v1x;
+	m1 = Fm;
+	
+	//Process target particle 
+	x = x*-1;
+	v2 = InVelT;
+	x2 = dot(x,v2);
+	v2x = x * x2;
+	v2y = v2 - v2x;
+	m2 = Ft;
+
+	//Return velocity for source particle
+	newVel = vec3( v1x*(m1-m2)/(m1+m2) + v2x*(2*m2)/(m1+m2) + v1y );
+    return 0;
+}
+\end{lstlisting}
+
+
+\caption[Calculate collision momentum]{The code for \texttt{CalcMomentum} which performs a 3-d reflection around the line of impact between two particles. }
+\label{fig:CalcMomentum}
+\end{figure}

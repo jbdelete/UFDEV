@@ -1,0 +1,90 @@
+
+\begin{figure}[h]
+\centering
+\lstset{style=gpucode,linewidth=6.5in,xleftmargin=0.25in}
+
+\begin{lstlisting}
+vec3 CalcBoundaryVel(uint index, vec3 Pos, vec3 Vel, uint Center) 
+{
+	uint startf = 4465;
+	uint endf = 4470;
+	uint particl = 4704;
+	
+	vec3 pointA;
+	vec3 pointB;
+	vec3 pointC;
+	float radA;
+	float radB;
+	float lowZ;
+	vec3 rvel;
+	
+	Get the angle of the particle in the XY plane.
+	float angxy = atan2piPt(vec2(Pos.x-Center,Pos.y-Center));
+	
+	// Get the radius at this point.
+	radA = GetCDRadius(Pos.z);
+	
+	// If the radius is negative we are on a flat 
+	// so just revers xyvelocity
+	if(radA < 0.0)
+	{
+		rvel.x = -Vel.x;
+		rvel.y = -Vel.y;
+		rvel.z = Vel.z;
+		return rvel;
+	}
+
+	// Get point A at the same angle of the particle but
+	// on the boundary
+	pointA.x = radA*cos(angxy)+Center;
+	pointA.y = radA*sin(angxy)+Center;
+	pointA.z = Pos.z;
+
+	// For the next point we need a vector up or doen the slope
+	// parallel to Point A. THis code makes sure we always get
+	// that point from another part of the nozzle that is sloping.
+	if(Pos.z >= secx2_beg && Pos.z  < secx2_end - 10) 
+		lowZ = pointA.z+4.0;
+		
+	else if(Pos.z >= secx2_beg+10.0 && Pos.z < secx2_end)
+		lowZ = pointA.z-4.0;
+		
+	if(Pos.z >= secx4_beg && Pos.z < secx4_end - 10 ) 
+		lowZ = pointA.z+4.0;
+		
+	else if(Pos.z >= secx4_beg+10.0 && Pos.z < secx4_end )
+		lowZ = pointA.z-4.0;	
+	
+	// Get the new radius for point B and calulate the vector.
+	radB = GetCDRadius(lowZ);
+	pointB.x = radB*cos(angxy)+Center;
+	pointB.y = radB*sin(angxy)+Center;
+	pointB.z = lowZ;
+
+	// These two previous point are not independent since they
+	// are parallel we need a point off to the side. Rotate
+	// the point B vactor a little and esablish the last 
+	// indepented point on the plane    
+	pointC.x = radB*cos(angxy+PI/64)+Center;
+	pointC.y = radB*sin(angxy+PI/64)+Center;
+	pointC.z = lowZ;
+		
+	// Get the plane normal
+	vec3 param1 = pointA-pointB;
+	vec3 param2 = pointA-pointC;
+	vec3 normvec = cross(pointA-pointB, pointA-pointC);
+	float D = -dot(normvec,	pointA);
+    vec3 nnormvec = normalize(normvec);
+	
+	// Caclulate velocity reflection.
+	rvel = Vel - 2.0*(dot(Vel,nnormvec)*nnormvec);
+
+	return rvel;
+
+}
+\end{lstlisting}
+
+
+\caption[Benchset test configuration file]{The code for \texttt{CalcBoundaryVel(...) } which performs the calculates required to reflect the particle around the boundary norm.}
+\label{fig:CalcBoundaryVel}
+\end{figure}

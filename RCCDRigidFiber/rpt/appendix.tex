@@ -1,0 +1,44 @@
+% !TeX root = main.tex
+\newpage
+\clearpage
+\section{Appendix}
+
+
+\subsection{Particle-Particle Collision/Resolution CodingDetails}\label{ppcrc}
+
+Collision resolution is processed in the compute pipeline as shown in the code of \figo{ParticleComp}. The \textit{potentially colliding set} is delivered to the compute kernel by the graphics pipeline. Starting at line 2, the code iterates over the eight corners of the \textit{axis aligned bounding box} (AABB) encasing the particle sphere, seeking other particle corners that occupy the same cell. The code traverses the length of the array which contains all of the particles in the cell at line 12. When a particle is found, it is registered in a duplicates array, since two or more particle corners can span the same cells. If it is not a duplicate the \texttt{ProcessParticleContact(..)} function is called in \figo{ProcessParticleContact}. 
+   
+\input{../code/ParticleComp.tex}
+
+The code in \figo{ProcessParticleContact} performs \textit{contact determination} by using a squared distance determination between centers (line 28) and a squared distance of the sum of their radii (line 33). If the squared the distance between centers is less than the squared distance of the sum of their radii then they are in contact. The squared distances are used because the square root function is expensive on the GPU. If the particles are in contact then the resulting momentum reaction is calculated.
+
+\input{../code/ProcessParticleContact.tex}
+
+\input{../code/CalcMomentum.tex}
+
+\subsection{Particle-Boundary Collision/Resolution CodingDetails}\label{pbcrc}
+
+Next, in the same manner as particle-particle collision the squared distance between the particle and the wall is determined and if the the particle lay within it the boundary collision it is processed (line 33) by calling the \texttt{CalcBoundaryVel(..)} function, \figo{CalcBoundaryVel}. 
+
+\input{../code/ProcessCDNBoundary.tex}
+
+\Figo{CalcBoundaryVel} shows the code for the calculation of equations (\ref{eqn:bound001},\ref{eqn:bound002}). There are some other considerations, such as contact with a flat. 
+
+If the collision is with a flat, then the \texttt{GetCDRadius(...)} function returns the negative of its length (line 19). If this is the case, only the sign of the xy velocity components need be changed (lines 25-28). If the particle is on the slope of the nozzle then the three independent points are determined as described. Care must be taken when getting independent points on the slope, to insure that the reach does not cross over into another section of the nozzle that is off the slope in question (lines 40-50).
+
+\input{../code/CalcBoundaryVel.tex}
+
+The final component of boundary detection is the function that returns the radius at any point along the z direction of the nozzle \figo{GetCDRadius}. This is a piecewise function that returns a positive value if the particle is on the slope of the boundary and a negative value if it is on a flat. If this function represented an equation then it could not only return the radius of the boundary at any point, but the tangent plane by taking the derivative.   
+
+\input{../code/GetCDRadius.tex}
+
+\subsection{Update Position}\label{up}
+
+\Figo{ChangePosCDNoz} shows the code for position change. A number of checks are performed here, starting with determining if the particle exceeded the boundary(lines 21-25). If this happens the particle is disabled. The next checks are to determine if this run has motion enabled by configuration file, if the particle has been disabled, or if the simulation has been stopped or started by pressing the 'S' key (line 29).
+
+The angle of the yz components of velocity are taken (lines 34-36) and are stored in the particle variable (line 37). This value is inserted in the first component of the HSV color map. It should be noted that the spherical angles of the velocity can also be determined and inserted into the first two components of the HSV color map. Additionally, even though the angles are taken in a slice of the yz plane, the 3-D dimension of the particle velocity can be plotted. For this demonstration we are only using the yz plane. 
+
+With all of the calculus being performed \textit{not a number} (nan) can be returned. This is a major error and causes the simulation to shut down. Finally, if the particle has exited the nozzle it is disabled. 
+\input{../code/ChangePosCDNoz.tex}
+
+In this demonstration a total of 156,924 particles exhibited no boundary violations or nan's.

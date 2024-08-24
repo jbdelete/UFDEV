@@ -1,0 +1,193 @@
+% !TeX root = main.tex
+
+\documentclass[10pt,conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+
+\usepackage{cite}
+\usepackage{algpseudocode}
+\usepackage[figure,linesnumbered,inoutnumbered,longend]{algorithm2e}
+\usepackage{rotating,tabularx}
+\usepackage{listings}
+\usepackage{lstautogobble}
+\usepackage{textcomp}
+\usepackage{float} 
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{adjustbox}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{pdfpages}								%Pdf manipulations.
+\usepackage{setspace}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xfrac}
+\usepackage{bm}
+\usepackage[square,numbers]{natbib}
+%\usepackage[colorlinks,citecolor=blue]{hyperref}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage{color}
+%\usepackage{acronym}
+\RequirePackage[printonlyused,withpage]{acronym}
+\usepackage{makecell}
+\setlength{\parskip}{0.05in}
+%\pdfminorversion=7
+\newcounter{figCount}%      This is an internal counter to track how many figures
+\setcounter{figCount}{1}%   We will start at 1 due to how stepping it works.
+
+\newcommand{\addFigure}[3][\Alph{figCount}]{%   Command to manually add a figure
+    \parbox{#2\textwidth}{\centering #1 \\ \includegraphics[width=#2\textwidth]{#3}}
+    \stepcounter{figCount}
+    }
+
+\newenvironment{multiFigure}% Environment that mimicks figure type environment,
+%                               Except it doesn't float around and it resets figCount.
+    {% Begin Environment Code
+        \setcounter{figCount}{1}
+        \minipage\textwidth
+    }
+    {% End Environment Co
+        \endminipage
+    }
+
+\makeatletter
+\def\input@path{{../rpt_common}}
+%or: \def\input@path{{/path/to/folder/}{/path/to/other/folder/}}
+\makeatother
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\SetAlFnt{\footnotesize}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+
+%% JMB MY STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{Abstractcolor}{rgb}{0,0.6,0}
+\definecolor{Commentcolor}{rgb}{0.74,0.11,0.16}
+\definecolor{Objectcolor}{rgb}{0.6,0.0,0.4}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mybk}{rgb}{0.95,0.95,0.95}
+
+\newcommand{\ctxt}[1]{\textcolor{Commentcolor}{\\ \small QUOTE: #1 :ENDQUOTE \\}}
+\newcommand{\jorg}[1]{\textcolor{red}{#1}}
+\newcommand{\ncite}[1]{\textcolor{red}{CITE:#1}}
+\newcommand{\todo}[1]{\textcolor{blue}{TODO:#1}}
+\newcommand{\intendThe }[1]{\textcolor{blue}{GOAL:#1}}
+\newcommand{\dens}{\mathfrak{m}}
+% Format comments in algorithm
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+  
+\newcommand{\algo}[1]{Fig. #1}
+\newcommand{\algn}[2]{Fig. #1, line #2}
+\newcommand{\Algo}[1]{Fig. #1}
+\newcommand{\Algn}[2]{Fig #1, line #2}
+\newcommand{\figo}[1]{fig. \ref{fig:#1}}
+\newcommand{\Figo}[1]{Fig. \ref{fig:#1}}
+\newcommand{\figob}[2]{fig. \ref{fig:#1}-(#2)}
+\newcommand{\Figob}[2]{Fig. \ref{fig:#1}-(#2)}
+\newcommand{\tigo}[1]{table \ref{tab:#1}}
+\newcommand{\Tigo}[1]{Table \ref{tab:#1}}
+
+
+\newcommand{\app}{\textbf{\textit{rccdApp}}}
+\newcommand{\ver}{\textit{\textbf{verApp}}}
+\newcommand{\gen}{\textit{\textbf{genApp}}}
+\newcommand{\mmrr}{\textit{\textbf{mmrr}}}
+\newcommand{\marr}{\textit{\textbf{marr}}}
+\newcommand{\arr}{\textit{\textbf{arr}}}
+\newcommand{\garr}{\textit{\textbf{garr}}}
+\newcommand{\carr}{\textit{\textbf{carr}}}
+\newcommand{\mcpt}{\textit{\textbf{mcpt}}}
+\newcommand{\mgpt}{\textit{\textbf{mgpt}}}
+\newcommand{\mtpt}{\textit{\textbf{mtpt}}}
+\newcommand{\tarr}{\textit{\textbf{tarr}}}
+\newcommand{\gpuarr}{\textit{\textbf{gpuarr}}}
+\newcommand{\mat}{\textit{\textbf{matApp}}}
+\newcommand{\rtrr}{\textit{\textbf{rtrr}}}
+\newcommand{\tspf}{\textit{\textbf{tspf}}}
+\newcommand{\tfps}{\textit{\textbf{tfps}}}
+\newcommand{\gfps}{\textit{\textbf{gpufps}}}
+\newcommand{\cpuarr}{\textit{\textbf{cpuarr}}}
+\newcommand{\quan}{$\bm{l_q}$}
+\newcommand{\pdens}{$\bm{D}$}
+\newcommand{\vol}{$\bm{l_c}$}
+\newcommand{\maxp}{$\bm{max_p}$}
+\newcommand{\cdens}{$\bm{F}$}
+\newcommand{\ccdens}{$\bm{f}$}
+\newcommand{\slen}{$\bm{L_{s}}$}
+\newcommand{\radius}{$\bm{R}$}
+\newcommand{\bestTime}{27 fps}
+\newcommand{\bestNumberParts}{4,260,864}
+\SetKwComment{Comt}{$\triangleright$\ }{}
+
+\usepackage{nicematrix}
+\bibliographystyle{../bst/IEEEtranSNLink}
+
+\include{../code/code_gpu.tex}
+\include{../code/code_C.tex}
+\include{../code/code_tst.tex}
+
+\lstnewenvironment{queryl}[1][] 
+ {\lstset{frame=shadowbox,escapechar=`,linewidth=8cm, #1}}
+ {}
+
+\def\StripPrefix#1>{}
+\def\isOverleaf{\fi
+	\def\overleafJobname{output}% overleaf defaults to 'output' as \jobname
+	\edef\overleafJobname{\expandafter\StripPrefix\meaning\overleafJobname}%
+	\edef\job{\jobname}%
+	\ifx\job\overleafJobname
+}
+%\if\isOverleaf
+%\bibliographystyle{/bst/IEEEtranSNLink}
+ % References. First 				
+%\else
+\bibliographystyle{../bst/IEEEtranSNLink}   % References. First 
+%\fi
+
+\setlength{\textfloatsep}{0.1cm}
+
+\begin{document}
+\pagenumbering{arabic}
+%\includepdf[pages={1-2}]{../orig/CoverSheet.pdf}
+\title{Status Report \\ Rigid Fiber using (RCCD) rounded cell collision detection and regions of interest.}
+
+
+\author{
+\IEEEauthorblockN{Jackie Bell}
+\IEEEauthorblockA{\textit{Department of Mechanical} \\
+\textit{and Aerospace Engineering} \\
+\textit{University of Florida}\\
+Gainesville Florida,United States \\
+0009-0001-4291-2230}
+
+
+}
+\maketitle
+
+\pagestyle{plain}
+\begin{abstract}
+  
+\end{abstract}
+
+\begin{IEEEkeywords}
+particle system, image space, collision detection, nearest neighbor, region of interest, GPU, GPGPU.
+\end{IEEEkeywords}
+
+\input{RCCDD_FiberP001}
+%\input{Figures}
+\input{References}
+
+%\input{ReviewNeeded}
+%\input{todo}
+
+
+\end{document}

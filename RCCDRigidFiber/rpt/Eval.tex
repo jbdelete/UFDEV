@@ -1,0 +1,78 @@
+% !TeX root = main.tex
+
+\subsection{Setup} \label{eval}
+
+
+In most applications the evaluation data is extracted from the source, in this case the GPU. But GPU-CPU communications is very expensive. Collecting data from a parallel system is also difficult and complicates the codes. When the GPU if finished it transfers a \textit{swap frame} image to a frame buffer in video memory which is accessible by the CPU. When capturing a frame buffer with a simple screen capture program, the GPU is not impacted. The task then is to provide color information that is meaningful and to then extract the required data from that.
+
+
+
+There is a source of high speed communication between the GPU and CPU called \textit{push constants}. These would allow a built-in screen capture program to be configured to capture a series of frames. This would be convenient when there is the need to analyze changes frame by frame.
+
+\input{../images/SimpleSequence.tex}
+
+In order to show the process of evaluating the flow a simple experiment is set up. \Figo{SimpleConfig} shows the configuration. The image is misleading in that is shows only 6  blue particles on each side of the nozzle. In reality there are 720 particles which will be activated in sequence. Each set of particles have a sequence number stored in the particle structure. This represents the frame number at which the particle will become active which provides the means to stream or flow.
+
+\input{../images/main_HSV2GradientLabelled.tex}
+
+When the Matlab application generates the data for the simulation it creates two files, one binary holding the actual particles, and one configuration file, \figo{tstfile}. This file communicates the height, width, and length of the cell array (lines 5-7), the radius of the particle, the count of actual particles (line 10), the location of the binary data file to load (line 13), the thread dispatch configuration for the CPU (lines 16-18) and the workgroup threads for the GPU (lines 19-21). 
+
+\input{../images/GradientPlotLabelled.tex}
+
+Each cell can contain any number of particles which requires an array to store them. The \textit{ColArySize} parameter (line 22) sets the size of this array. This parameter is determined at this point by experience since if the number of particles exceeds the number of slots available in the array the simulation will error and exit. All other parameters are not used.
+
+\input{../images/main_HSV2GradientSimp.tex}
+
+The simple sequence is run and results of the flow are illustrated in \figo{SimpleSequence}. In fig. \ref{subfig:SimpleSim001} the boundary particles are enabled but interfere with the view. In fig. \ref{subfig:SimpleSim002} they are disabled. 
+
+This view of this flow is in 3-d, but in a upcoming section we will take a slice of the flow in 2-d. Take note of the colors in fig. \ref{subfig:SimpleSim005} where the top appears to be a purplish color while the bottom tends more towards the yellow.
+
+\input{../images/SimpVectPlot.tex}
+
+Two Matlab applications were developed to evaluate the flow. The first, \textit{\textbf{hsvmain}}, \figo{main_HSV2GradientLabelled} provides an interface to view and adjust settings. Entering an angle in the \textit{Angle Input field} plots an \textit{Angle Vector} on the \textit{HSV Map} color map indicating the direction in the color field. The color of that angle is also displayed in the \textit{HSV Color Output} image box. The image being processed is illustrated in the \textit{Image Evaluation Field}.
+
+Activating the \textit{Transform} button launches a child application illustrated in \figo{GradientPlotLabelled}. This application transforms the color field into a directional vector field as shown in the \textit{Velocity Angle Gradient Field}.
+\input{../images/FullFlow.tex}
+
+Images can be very complex and noisy, or the viewer may want to see specific information, so there needs to be a way to filter results. The granularity of the plot can be adjusted with the \textit{Granulatiry} text box. Pixels are square in an image file, not round, but through a series of steps on the GPU and video system they are rounded. The granularity sets a square box of the side length which will evaluate every NxN set of pixels in the image. 
+
+
+
+The \textit{Angle Filter Entries} filter for a rage of directions on the top and bottom of the flow. The \textit{Component Filter Entries} filter for the horizontal or vertical components of velocity angles.
+\Figo{main_HSV2GradientSimp} shows two HSV color maps representing 30 and 330 degrees. These colors seem to match the dominate colors in the \textit{Image Evaluation Field} of \figo{GradientPlotLabelled}. 
+
+Performing an update in the plotting app (\figo{GradientPlotLabelled}) results in the vector plot of fig. \ref{subfig:SimpVectPlot01}. To see the vectors more clearly we scale the top of the vector field in fig. \ref{subfig:SimpVectPlot02}. Fig. \ref{subfig:SimpVectPlot03} shows the angles filtered from 320 to 340 and 20 to 40 degrees while fig. \ref{subfig:SimpVectPlot04} shows the same filtering but the gradient is set to its lowest value.
+
+\section{Results and discussion}
+
+In this section we perform full flow through a CD nozzle with 161,508 particles in realtime. The rate of flow in this demonstration requires some time to develop but this is consequence of the infancy of this application. The demonstration is in relative dimensionless units, but for the sake of this argument assume units of meters. The nozzle then is 64 meters long with a particle speed (velocity magnitude) of 0.5 m/s and a time step of 0.01s. The particle then changes position at 50 mm per second. The full flow demonstration starts at almost 400 \textit{fps} and slows to about 70 \textit{fpos}. This frame rate for 161,508 particles aligns with the performance found in \citep{bell2024MST}, Table III for between 115,712 and 246,784 particles which may be interpreted to mean that the additional load of collision resolution has little impact.
+
+\Figo{FullFlow} shows 10 time slices of full flow notice how the purple and yellow areas form distinctive patterns.
+
+
+We can analyze the flow by slicing the nozzle for a 2-d view. \Figo{FullFlowSlice} shows a center yz slice of image fig. \ref{subfig:Slide10}. The viewer (camera, or eye, in computer graphics) is 240 units from the center of the nozzle. The nozzle is sliced from 240 to 241 units. Unfortunately there is not the particle density required to see patterns that are obvious in the full flow series (\figo{FullFlow}). 
+\input{../imgperm/FullFlowSlice.tex}
+
+
+\subsection{Discussion - What can we learn?}
+
+\Figo{FullFlowAntiBoundary} is a vector plot of the flow. Notice how the velocity angle form boundaries which are mirror images of the physical boundaries. As the flow increases in velocity magnitude we can envision these growing and clamping the flow.
+\input{../imgperm/FullFlowAntiBoundary}
+
+\Figo{ChokedFlow} is an illustration of a de Laval nozzle and shows what may happen as the back pressure of the flow is increased in an actual nozzle. At pressure 1 (P1) a small boundary is formed mirroring the physical boundary. At pressure 2 (P2) the fluid boundary grows toward the throat of the nozzle. At pressures above P3 the flow and this fluid boundary establish an equilibrium and the boundary restricts the flow down the throat. Any increase of pressure from P3 increases the pressure of the boundary and flow but both remain im equilibrium.
+\input{../imgperm/ChokedFlow.tex}
+
+\section{Conclusions} \label{summary}
+
+This very basic demonstration how powerful autonomous particle simulations can be. There is a great deal of mathematics than can be performed on vector fields both ans snapshots and changes in parameters. Simulation results can be evaluated for curl which can show how eddys form. The simulation can be rotated for slices in 3-d to evaluate specific phenomena such as diverging section shock. This also means that shocks are no longer infinitesimal entities that must be skipped over.
+
+The project is multi-disciplinary and aspires to bring computer graphics concepts to thermo-fluid flow. Computer graphics experts have knowledge of a great deal of different types of math such as splines, barycentric coordinates, etc. They are also experts on the GPU which is essential for performance tuning and software design.
+
+This approach is also the reverse of CFD approaches where the profile of the nozzle is determined before the study. This methods allows the researcher to start with a profile that can be modified in real time so to evaluate the effect on the flow. This may also allow the training of Artificial Intelligence so to produce novel forms.
+
+
+
+ 
+
+
+
