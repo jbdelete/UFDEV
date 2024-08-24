@@ -5,7 +5,7 @@ This git repository is for 3-D thero-fluids simulation
   $ git clone https://github.com/jbdelete/UFDEV.git\
 2. Change directory to\
   $ cd UFDEV/install/linux\
-3. Run the install script. I adds the MATPATH  environment variable\
+3. Run the install script. It adds the MATLABPATH  environment variable\
    which set the paths for matlab.\
   $ bash ufdev.sh\
 or\
