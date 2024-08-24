@@ -25,7 +25,7 @@ if '%errorlevel%' NEQ '0' (
 ::--------------------------------------
 
 :: UFDEV Install bacth file
-set ENVVAR=
-setx /m MATLABPATH "j:\ufdev\matlab\latex;j:\UFDEV\matlab\MPS\common;j:\UFDEV\matlab\MPS;j:\UFDEV\matlab\MPS\main"
+SET -p pdir echo "Enter the root directory without trailing slash
+setx /m MATLABPATH "%pdir%\ufdev\Project\matlab\latex;%pdir%\UFDEV\Project\matlab\MPS\common;%pdir%:\UFDEV\Project\matlab\MPS;%pdir%:\UFDEV\Project\matlab\MPS\main"
 SET
 pause
