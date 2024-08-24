@@ -12,3 +12,9 @@ or\
   edit ~/.bashrc and insert the line:\
 export MATLABPATH="$HOME/UFDEV/Project/matlab/latex;$HOME/UFDEV/Project/matlab/MPS/common;$HOME/UFDEV/Project/MPS;$HOME/UFDEV/Project/matlab/main;$HOME/UFDEV/Project/matlab/MPS/main_rods'\
      
+## Installing on Windows
+1. Clone the the repository the first time.\
+  $ git clone https://github.com/jbdelete/UFDEV.git\
+2. Change directory to\
+  $ cd UFDEV/install/windows\
+3. 
