@@ -1,6 +1,6 @@
 # Welcome to UFDEV
 This git repository is for 3-D thero-fluids-solids simulation.
-There is a git tutorial in:\
+There is a git tutorial in if you want to learn more:\
 	UFDEV/install/GitTutorial.pdf
 ## Installing on Windows
 1. Clone the the repository the first time.\
@@ -61,19 +61,24 @@ Follow this tuorial.
    $ git -a commit 
 6. Now update the local repository with the remote.\
    $ git pull
-7. The push your changes to the remote repository on GitHub. YOURNAME is the name you used in step 2.\ (KEY) is a CRC string you recieve by email. It expires every 90 days.
-   $ git push -u https://(YOURNAME):(KEY)@github.com/jbdeete/UFDEV.git main
+7. The push your changes to the remote repository on GitHub. YOURNAME is the name you used in step 2.
+   (KEY) is a CRC string you recieve by email. It expires every 90 days.\
+   $ git push -u https://(YOURNAME):(KEY)@github.com/jbdeete/UFDEV.git main\
    for example my push command loks like:\
    git push -u https://Jack:ghp_HXmEbbuUBC@github.com/jbdelete/UFDEV.git main
 9. Go to\
-   https://github.com/jbdelete/UFDEV\
-   and check the Contrib.md file to see if you chnages were updated.
+   https://github.com/jbdelete/UFDEV
+   and check the Contrib.md file to see if you changes were updated.
 
+10. Make sure Matlab was not running during this process. If it was close it and reopen so it can see the MATLABPATHJ envirnment variable.
+    Navigate to\
+   	~UFDEV/Project/matlab/MPS/main_rods\
+   and run\
+	main_JustRods.m
+11. Email any problems.
+    
 
-
-
-
-   end
+   
 
 
  
