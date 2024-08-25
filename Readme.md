@@ -1,6 +1,6 @@
 # Welcome to UFDEV
 This git repository is for 3-D thero-fluids simulation
-current key git push -u https://Jack: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@github.com/jbdelete/UFDEV.git main
+
 ## Installing on Windows
 1. Clone the the repository the first time.\
   $ git clone https://github.com/jbdelete/UFDEV.git\
