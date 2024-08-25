@@ -18,9 +18,7 @@ This git repository is for 3-D thero-fluids simulation
 3. Run the install script. It adds the MATLABPATH  environment variable\
    which set the paths for matlab.\
   $ bash ufdev.sh\
-or\
-  edit ~/.bashrc and insert the line:\
-export MATLABPATH=~/UFDEV/Project/matlab/latex;~/UFDEV/Project/matlab/MPS/common;~/UFDEV/Project/matlab/MPS;~/UFDEV/Project/matlab/MPS/main;~/UFDEV/Project/matlab/MPS/main_rods
+
 4. Add your identity \
 	$ git config --global user.name "John Doe"\
 	$ git config --global user.email johndoe@example.com\
@@ -28,7 +26,7 @@ export MATLABPATH=~/UFDEV/Project/matlab/latex;~/UFDEV/Project/matlab/MPS/common
 5. Add your editor
 	$ git config --global core.editor emacs\
 	
-#using git
+# Using git
 
 Once the proeject is cloned then we need to know how to use git for collaboration.
 The basic Git workflow goes something like this:\
