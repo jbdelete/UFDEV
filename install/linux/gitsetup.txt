@@ -36,7 +36,7 @@ Pull
 	git remote show origin
 	
 Push 
-git push -u https://Jack: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@github.com/jbdelete/UFDEV.git main
+
 git push origin main
 	
 clear screen
