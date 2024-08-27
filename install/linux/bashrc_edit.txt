@@ -1,0 +1,4 @@
+edit ~/.bashrc 
+and insert the line:
+
+export MATLABPATH=~/UFDEV/Project/matlab/latex;~/UFDEV/Project/matlab/MPS/common;~/UFDEV/Project/matlab/MPS;~/UFDEV/Project/matlab/MPS/main;~/UFDEV/Project/matlab/MPS/main_rods"

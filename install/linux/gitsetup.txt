@@ -1,4 +1,7 @@
 GIT SETUP
+
+token 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
+
 git init
 git config --global init.defaultBranch main
 git branch -m main 
@@ -32,6 +35,10 @@ Pull
 	git fetch origin
 	git remote show origin
 	
+Push 
+
+git push origin main
+	
 clear screen
  ctrl-L
  reset
@@ -59,3 +66,7 @@ Create a bash script
 cat >ufdev
 chmod u+x ufdev
 bask ufdev
+
+echo 'export MATLABPATH="$HOME/UFDEV/Project/matlab/latex;$HOME/UFDEV/Project/matlab/MPS/common;$HOME/UFDEV/Project/MPS;$HOME/UFDEV/Project/matlab/main;$HOME/UFDEV/Project/matlab/MPS/main_rodsx' >> ~/.bashrc
+source ~/.bashrc
+echo $MATLABPATH
