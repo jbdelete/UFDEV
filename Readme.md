@@ -34,11 +34,11 @@ There is a git tutorial in if you want to learn more:\
 ## Installing on Linux (assuming bash)
 1. Install git: if there is a desktop version it is advisable to use that.\
   **$ sudo apt install git-all**
-1. Clone the the repository the first time.\
+2. Clone the the repository the first time.\
   **$ git clone https://github.com/jbdelete/UFDEV.git**
-2. Change directory to\
+3. Change directory to\
   **$ cd UFDEV/install/linux**\
-3 Run the install script.\
+4 Run the install script.\
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**$ bash ufdev.sh**\
    It will ask:\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Please Enter Path to the directory that contains UFDEV:**\
@@ -51,10 +51,10 @@ There is a git tutorial in if you want to learn more:\
    Copy and paste the MATLABPATH string to the end of your ~/.bashrc\
    Close the current bash terminal and open a new one. This will echo the paths in the string you just added to your bashrc.\
    After each path it should print "is a directory".
-4. Add your identity.\
+5. Add your identity.
 	**$ git config --global user.name "John Doe"**\
 	**$ git config --global user.email johndoe@example.com**
-5. Add your editor\
+6. Add your editor\
 	**$ git config --global core.editor emacs**
 	
 # Using git
@@ -76,36 +76,37 @@ Follow this tuorial.
 1. You need to attach your name and email to this version so the remote knows who you are.
 2. Use the email address of your **GitHub account that you recieved the invite under**.
 3. Find
-   **~/UFDEV/Contrib.md and open it in your editor**.
-4. Add **YOURNAME** to the repsoitory. 
-	**'## Your Name'**\
-5. Add **YOUREMAIL** to the repsoitory. 
+   **~/UFDEV/Contrib.md**
+   and open it in your editor.
+5. Add **YOURNAME** to the repsoitory. 
+	**'## Your Name'**
+6. Add **YOUREMAIL** to the repository.\
 	**'###Your University - Your department'**
 git is a distributed version control system so the version that resides on your machine is a full repository.
 This means that your local version must be updated first, and then the remote version on github needs to be updated.
 You **commit** to your local version then you **push** to the remote one.
 
-6. Before making anything permanent get the status of your local version. Change to the project directory (UFDEV). Then:\
+7. Before making anything permanent get the status of your local version. Change to the project directory (UFDEV). Then:\
    **$ git status**
-7. Commit your local changes. The -a parameter will tell the commit to add any new files.\
+8. Commit your local changes. The -a parameter will tell the commit to add any new files.\
    **$ git -a commit** 
-8. Now update the local repository with the remote.\
+9. Now update the local repository with the remote.\
    **$ git pull**
-9. Then push your changes to the remote repository on GitHub. YOURNAME is the name you used in step 2.
+10. Then push your changes to the remote repository on GitHub. YOURNAME is the name you used in step 2.
    (KEY) is a CRC string you recieve by email. \
    **$ git push -u https://(YOURNAME):(KEY)@github.com/jbdeete/UFDEV.git main**\
    for example my push command loks like:\
    **$ git push -u https://Jack:ghp_HXmEbbuUBC@github.com/jbdelete/UFDEV.git main**
-10. Save this long command somwhere so that you can copy and paste it. 
-11. Go to\
+11. Save this long command somwhere so that you can copy and paste it. 
+12. Go to\
    **https://github.com/jbdelete/UFDEV**
    and check the Contrib.md file to see if you changes were updated.
-12. Make sure Matlab was not running during this process. If it was, close it and reopen, so it can see the MATLABPATH environment variable.
+13. Make sure Matlab was not running during this process. If it was, close it and reopen, so it can see the MATLABPATH environment variable.
     Navigate to\
    	**~UFDEV/Project/matlab/MPS/main_rods**\
    and run\
 	main_JustRods.m
-13. Email any problems.
+14. Email any problems.
     
 
    
