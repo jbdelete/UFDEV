@@ -81,7 +81,7 @@ Follow this tuorial.
 5. Add **YOURNAME** to the repsoitory. 
 	**'## Your Name'**
 6. Add **YOUREMAIL** to the repository.\
-	**'###Your University - Your department'**
+	**'###Your University - Your department'**\
 git is a distributed version control system so the version that resides on your machine is a full repository.
 This means that your local version must be updated first, and then the remote version on github needs to be updated.
 You **commit** to your local version then you **push** to the remote one.
