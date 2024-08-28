@@ -15,7 +15,7 @@ There is a git tutorial in if you want to learn more:\
 1. Clone the the repository the first time.\
   $ git clone https://github.com/jbdelete/UFDEV.git
 2. Change directory to\
-  $ cd UFDEV/install/linux
+  $ cd UFDEV/install/linux\
   Run the install script and enter the parent directory of UFDEV. Copy and paste the MATLABPATH string to the end of your ~/.bashrc
   Close the current bash terminal and open a new one. This will echo the paths in the string you just added to your bashrc.
   After each path it should print "is a Directory".
