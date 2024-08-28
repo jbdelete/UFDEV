@@ -24,15 +24,15 @@ There is a git tutorial in if you want to learn more:\
 2. Change directory to\
   **$ cd UFDEV/install/linux**\
 3 Run the install script.\
-       **$ bash ufdev.sh**\
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**$ bash ufdev.sh**\
    It will ask:\
-       **Please Enter Path to the directory that contains UFDEV:**\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Please Enter Path to the directory that contains UFDEV:**\
    Enter the parent directory of UFDEV without trailing slash.\
    The scriot will print the directory you eneterd and ask you to verify:\
-       **Is this the correct parent directory?(y,n)**\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Is this the correct parent directory?(y,n)**\
    If the answer is yes then the script will print the MATLABPATH string
    and instruct you to:\
-       **Copy this path and paste to the end of your ~/.bashrc file.**\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Copy this path and paste to the end of your ~/.bashrc file.**\
    Copy and paste the MATLABPATH string to the end of your ~/.bashrc\
    Close the current bash terminal and open a new one. This will echo the paths in the string you just added to your bashrc.\
    After each path it should print "is a Directory".\
