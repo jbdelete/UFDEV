@@ -13,10 +13,10 @@ There is a git tutorial in if you want to learn more:\
 **https://github.com/jbdelete/UFDEV**
 6. Select the **Profile Icon** top right.
 7. Select **Settings**.
-8. All the way at the bottom select **<> Developer settings**.\
-9. Select the **Personal Access Tokens** dropdown.\
-10. Select **Personal Access Tokens (classic)**\
-11. Asks you for a password.\
+8. All the way at the bottom select **<> Developer settings**.
+9. Select the **Personal Access Tokens** dropdown.
+10. Select **Personal Access Tokens (classic)**
+11. Asks you for a password.
 12. Enter nick-name for token in text box.\
 13. Select everything in the check box panel below.\
 14. At the very bottom select **Generate personal access token**\
