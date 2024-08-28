@@ -78,7 +78,7 @@ Follow this tuorial.
 3. Find
    **~/UFDEV/Contrib.md**
    and open it in your editor.
-5. Add **YOURNAME** to the repsoitory. 
+5. Add **YOURNAME** to the repsoitory.\ 
 	**'## Your Name'**
 6. Add **YOUREMAIL** to the repository.\
 	**'###Your University - Your department'**\
