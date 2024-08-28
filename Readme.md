@@ -60,35 +60,36 @@ Follow this tuorial.
 
 1. You need to attach your name and email to this version so the remote knows who you are.
 2. Use the email address of your **GitHub account that you recieved the invite under**.
-1. Find
+3. Find
    **~/UFDEV/Contrib.md and open it in your editor**.
-3. Add the fllowing two lines, without the quotes. Use just your first name.\
+4. Add **YOURNAME** to the repsoitory. 
 	**'## Your Name'**\
+5. Add **YOUREMAIL** to the repsoitory. 
 	**'###Your University - Your department'**
-4. Save it.\
-	git is a distributed version control system so the version that resides on your machine is a full repository.
-	This means that your local version must be updated first and then the remote version on github needs to be updated.
-	You *commit* to your local version then you *push* to the remote one.
-5. Before making anything permanent get the status of your local version. Change to the project directory (UFDEV). Then:\
+git is a distributed version control system so the version that resides on your machine is a full repository.
+This means that your local version must be updated first, and then the remote version on github needs to be updated.
+You **commit** to your local version then you **push** to the remote one.
+
+6. Before making anything permanent get the status of your local version. Change to the project directory (UFDEV). Then:\
    **$ git status**
-6. Commit your local changes. The -a parameter will tell the commit to add any new files.\
+7. Commit your local changes. The -a parameter will tell the commit to add any new files.\
    **$ git -a commit** 
-7. Now update the local repository with the remote.\
+8. Now update the local repository with the remote.\
    **$ git pull**
-8. The push your changes to the remote repository on GitHub. YOURNAME is the name you used in step 2.
+9. Then push your changes to the remote repository on GitHub. YOURNAME is the name you used in step 2.
    (KEY) is a CRC string you recieve by email. \
    **$ git push -u https://(YOURNAME):(KEY)@github.com/jbdeete/UFDEV.git main**\
    for example my push command loks like:\
    **$ git push -u https://Jack:ghp_HXmEbbuUBC@github.com/jbdelete/UFDEV.git main**
-9. Go to\
+10. Go to\
    **https://github.com/jbdelete/UFDEV**
    and check the Contrib.md file to see if you changes were updated.
-10. Make sure Matlab was not running during this process. If it was, close it and reopen, so it can see the MATLABPATH environment variable.
+11. Make sure Matlab was not running during this process. If it was, close it and reopen, so it can see the MATLABPATH environment variable.
     Navigate to\
    	**~UFDEV/Project/matlab/MPS/main_rods**\
    and run\
 	main_JustRods.m
-11. Email any problems.
+12. Email any problems.
     
 
    
