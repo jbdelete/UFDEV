@@ -4,7 +4,7 @@ There is a git tutorial in if you want to learn more:\
 	UFDEV/install/GitTutorial.pdf
 ## Installing on Windows
 1. Clone the the repository the first time.\
-  $ git clone https://github.com/jbdelete/UFDEV.git
+  *$ git clone https://github.com/jbdelete/UFDEV.git*
 2. Change directory to\
   $ cd UFDEV/install/windows
 
