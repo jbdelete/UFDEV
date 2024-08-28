@@ -16,8 +16,8 @@ In your browser navigate to:\
 7. All the way at the bottom select **<> Developer settings**.\
 8. Select the **Personal Access Tokens** dropdown.\
 9. Select **Personal Access Tokens (classic)**\
-10. Asks you password.\
-11. Enter nick name for token in text box.\
+10. Asks you for a password.\
+11. Enter nick-name for token in text box.\
 12. Select everything in the check box panel below.\
 13. At the very bottom select **Generate personal access token**\
 14. Copy and store the token somwhere safe.\
