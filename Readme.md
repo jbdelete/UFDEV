@@ -38,7 +38,7 @@ There is a git tutorial in if you want to learn more:\
   **$ git clone https://github.com/jbdelete/UFDEV.git**
 3. Change directory to\
   **$ cd UFDEV/install/linux**\
-4 Run the install script.\
+4. Run the install script.\
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**$ bash ufdev.sh**\
    It will ask:\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Please Enter Path to the directory that contains UFDEV:**\
