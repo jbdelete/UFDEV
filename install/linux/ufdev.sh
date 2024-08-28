@@ -1,4 +1,7 @@
 #!/bin/bash
-echo 'export MATLABPATH=~/UFDEV/Project/matlab/latex;~/UFDEV/Project/matlab/MPS/common;~/UFDEV/Project/matlab/MPS;~/UFDEV/Project/matlab/MPS/main;~/UFDEV/Project/matlab/MPS/main_rods' >> ~/.bashrc
-source ~/.bashrc
-echo $MATLABPATHcd ..
+read -p "Please Enter Path:" -r r1
+parent=$(dirname "$r1")
+echo Copy and paste the following to bashrc:
+echo 
+echo "export MATLABPATH=${r1}/UFDEV/Project/matlab/latex;$r1/UFDEV/Project/matlab/MPS/common;$r1/UFDEV/Project/matlab/MPS;$r1/UFDEV/Project/matlab/MPS/main;$r1/UFDEV/Project/matlab/MPS/main_rods"
+echo
