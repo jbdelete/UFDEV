@@ -19,7 +19,7 @@ There is a git tutorial in if you want to learn more:\
 11. Asks you for a password.
 12. Enter nick-name for token in text box.
 13. Select everything in the check box panel below.
-14. At the very bottom select **Generate personal access token**
+14. At the very bottom select **Generate personal access token**.
 15. Copy and store the token somwhere safe.
 16. Continue to **Installing on Windows** or **Installing on Linux**.
 
@@ -96,15 +96,16 @@ You **commit** to your local version then you **push** to the remote one.
    **$ git push -u https://(YOURNAME):(KEY)@github.com/jbdeete/UFDEV.git main**\
    for example my push command loks like:\
    **$ git push -u https://Jack:ghp_HXmEbbuUBC@github.com/jbdelete/UFDEV.git main**
-10. Go to\
+10. Save this long command somwhere so that you can copy and paste it. 
+11. Go to\
    **https://github.com/jbdelete/UFDEV**
    and check the Contrib.md file to see if you changes were updated.
-11. Make sure Matlab was not running during this process. If it was, close it and reopen, so it can see the MATLABPATH environment variable.
+12. Make sure Matlab was not running during this process. If it was, close it and reopen, so it can see the MATLABPATH environment variable.
     Navigate to\
    	**~UFDEV/Project/matlab/MPS/main_rods**\
    and run\
 	main_JustRods.m
-12. Email any problems.
+13. Email any problems.
     
 
    
