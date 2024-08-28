@@ -5,8 +5,10 @@ There is a git tutorial in if you want to learn more:\
 ## All Users Account
 1. First you must create an account on GitHub. Once you have created an account send the\
    username (email address) to jb2ndr@ufl.edu so you can be added to the project.
-2. Wait until you recieve an invite. Press the invite link and accept the invite.
-3. Once the moderator is botified than you have accepted the invitation you will recieve an email notifing you that you can continue to install.
+2. Wait until you recieve an invite.
+3. Press the invite link and accept the invite.
+4. Once the moderator is notified that you have accepted the invitation you will recieve an email notifing you that you can continue to install.
+5. Continue to **Installing on Windows** or **Installing on Linux**.
  
 ## Installing on Windows
 1. Clone the the repository the first time.\
