@@ -16,17 +16,13 @@ There is a git tutorial in if you want to learn more:\
   $ git clone https://github.com/jbdelete/UFDEV.git
 2. Change directory to\
   $ cd UFDEV/install/linux
-3. A. You can open the file\
-   ~UFDEV\install\linux\bashrc_edit.text\
-   and add it to the end of ~/.bashrc\
-OR\
-   B. Run the install script. It adds the MATLABPATH environment variable automatically. 
-   which set the paths for matlab.\
-  $ bash ufdev.sh
-4. Add your identity.\
+  Run the install script and enter the parent directory of UFDEV. Copy and paste the MATLABPATH string to the end of your ~/.bashrc
+  Close the current bash terminal and open a new one. This will echo the paths in the string you just added to your bashrc.
+  After each path it should print "is a Directory".
+3. Add your identity.\
 	$ git config --global user.name "John Doe"\
 	$ git config --global user.email johndoe@example.com
-5. Add your editor\
+4. Add your editor\
 	$ git config --global core.editor emacs
 	
 # Using git
