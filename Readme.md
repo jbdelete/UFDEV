@@ -10,7 +10,7 @@ There is a git tutorial in if you want to learn more:\
 4. Once the moderator is notified that you have accepted the invitation you will recieve an email notifing you that you can continue to install.
 ### Create a Personal Token
 5. In your browser navigate to:\
-**https://github.com/jbdelete/UFDEV**\
+**https://github.com/jbdelete/UFDEV**
 6. Select the **Profile Icon** top right.\
 7. Select **Settings**.\
 8. All the way at the bottom select **<> Developer settings**.\
