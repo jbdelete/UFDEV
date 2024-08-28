@@ -35,7 +35,7 @@ There is a git tutorial in if you want to learn more:\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Copy this path and paste to the end of your ~/.bashrc file.**\
    Copy and paste the MATLABPATH string to the end of your ~/.bashrc\
    Close the current bash terminal and open a new one. This will echo the paths in the string you just added to your bashrc.\
-   After each path it should print "is a Directory".
+   After each path it should print "is a directory".
 4. Add your identity.\
 	**$ git config --global user.name "John Doe"**\
 	**$ git config --global user.email johndoe@example.com**
@@ -49,8 +49,8 @@ The basic Git workflow goes something like this:
 1. You modify files in your working tree.
 2. You selectively stage just those changes you want to be part of your next commit, which adds
 only those changes to the staging area.
-3. You do a commit, which takes the files as they are in the staging area and stores that snapshot
-permanently to your Git directory.
+3. You do a commit, which takes the files that are in the staging area and stores that snapshot
+permanently to your Git directory. We will usuall not do a stage and uodate our changer with a single command.
 
 If you try to commit change to the remote repository but somone elses has
 pushed changes to it, then you will have to pull the remote version so that your version 
@@ -58,7 +58,8 @@ knows what remote changes it is pushing against.
 
 Follow this tuorial.
 
-1. You need to attach you name and email to this version so the remote knows who you are.
+1. You need to attach your name and email to this version so the remote knows who you are.
+2. Use the email address of your **GitHub account that you recieved the invite under**.
 1. Find
    **~/UFDEV/Contrib.md and open it in your editor**.
 3. Add the fllowing two lines, without the quotes. Use just your first name.\
