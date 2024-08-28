@@ -23,9 +23,9 @@ There is a git tutorial in if you want to learn more:\
   **$ git clone https://github.com/jbdelete/UFDEV.git**
 2. Change directory to\
   **$ cd UFDEV/install/linux**\
-3 Run the install script.
-  **$ bash ufdev.sh**
-   It will ask:
+3 Run the install script.\
+  **$ bash ufdev.sh**\
+   It will ask:\
    	**Please Enter Path to the directory that contains UFDEV:**\
    Enter the parent directory of UFDEV without trailing slash.\
    The scriot will print the directory you eneterd and ask you to verify:\
