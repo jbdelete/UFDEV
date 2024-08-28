@@ -17,11 +17,11 @@ There is a git tutorial in if you want to learn more:\
 9. Select the **Personal Access Tokens** dropdown.
 10. Select **Personal Access Tokens (classic)**
 11. Asks you for a password.
-12. Enter nick-name for token in text box.\
-13. Select everything in the check box panel below.\
-14. At the very bottom select **Generate personal access token**\
-15. Copy and store the token somwhere safe.\
-16. Continue to **Installing on Windows** or **Installing on Linux**.\
+12. Enter nick-name for token in text box.
+13. Select everything in the check box panel below.
+14. At the very bottom select **Generate personal access token**
+15. Copy and store the token somwhere safe.
+16. Continue to **Installing on Windows** or **Installing on Linux**.
 
    
  
