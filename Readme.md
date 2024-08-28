@@ -9,19 +9,19 @@ There is a git tutorial in if you want to learn more:\
 3. Press the invite link and accept the invite.
 4. Once the moderator is notified that you have accepted the invitation you will recieve an email notifing you that you can continue to install.
 ### Create a Personal Token
-In your browser navigate to:\
+5. In your browser navigate to:\
 **https://github.com/jbdelete/UFDEV**\
-5. Select the **Profile Icon** top right.\
-6. Select **Settings**.\
-7. All the way at the bottom select **<> Developer settings**.\
-8. Select the **Personal Access Tokens** dropdown.\
-9. Select **Personal Access Tokens (classic)**\
-10. Asks you for a password.\
-11. Enter nick-name for token in text box.\
-12. Select everything in the check box panel below.\
-13. At the very bottom select **Generate personal access token**\
-14. Copy and store the token somwhere safe.\
-15. Continue to **Installing on Windows** or **Installing on Linux**.\
+6. Select the **Profile Icon** top right.\
+7. Select **Settings**.\
+8. All the way at the bottom select **<> Developer settings**.\
+9. Select the **Personal Access Tokens** dropdown.\
+10. Select **Personal Access Tokens (classic)**\
+11. Asks you for a password.\
+12. Enter nick-name for token in text box.\
+13. Select everything in the check box panel below.\
+14. At the very bottom select **Generate personal access token**\
+15. Copy and store the token somwhere safe.\
+16. Continue to **Installing on Windows** or **Installing on Linux**.\
 
    
  
