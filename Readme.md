@@ -35,7 +35,7 @@ There is a git tutorial in if you want to learn more:\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Copy this path and paste to the end of your ~/.bashrc file.**\
    Copy and paste the MATLABPATH string to the end of your ~/.bashrc\
    Close the current bash terminal and open a new one. This will echo the paths in the string you just added to your bashrc.\
-   After each path it should print "is a Directory".\
+   After each path it should print "is a Directory".
 4. Add your identity.\
 	**$ git config --global user.name "John Doe"**\
 	**$ git config --global user.email johndoe@example.com**
