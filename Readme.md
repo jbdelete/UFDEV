@@ -8,7 +8,22 @@ There is a git tutorial in if you want to learn more:\
 2. Wait until you recieve an invite.
 3. Press the invite link and accept the invite.
 4. Once the moderator is notified that you have accepted the invitation you will recieve an email notifing you that you can continue to install.
-5. Continue to **Installing on Windows** or **Installing on Linux**.
+### Create a Personal Token
+In your browser navigate to:
+**https://github.com/jbdelete/UFDEV**
+5. Select the **Profile Icon** top right.
+6. Select **Settings**.
+7. All the way at the bottom select **<> Developer settings**.
+8. Select the **Personal Access Tokens** dropdown.
+9. Select **Personal Access Tokens (classic)**
+10. Asks you password
+11. Enter nick name for token in text box.
+12. Select everything in the check box panel below.
+13. At the very bottom select **Generate personal access token**
+14. Copy and store the token somwhere safe.
+15. Continue to **Installing on Windows** or **Installing on Linux**.
+
+   
  
 ## Installing on Windows
 1. Clone the the repository the first time.\
@@ -28,9 +43,9 @@ There is a git tutorial in if you want to learn more:\
    It will ask:\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Please Enter Path to the directory that contains UFDEV:**\
    Enter the parent directory of UFDEV without trailing slash.\
-   The scriot will print the directory you eneterd and ask you to verify:\
+   The script will print the directory you entered and ask you to verify:\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Is this the correct parent directory?(y,n)**\
-   If the answer is yes then the script will print the MATLABPATH string
+   If the answer is *yes*, then the script will print the MATLABPATH string
    and instruct you to:\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Copy this path and paste to the end of your ~/.bashrc file.**\
    Copy and paste the MATLABPATH string to the end of your ~/.bashrc\
