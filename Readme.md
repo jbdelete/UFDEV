@@ -2,7 +2,7 @@
 This git repository is for 3-D thero-fluids-solids simulation.
 There is a git tutorial in if you want to learn more:\
 	UFDEV/install/GitTutorial.pdf
-## All Users Account
+## All Users Create Account
 1. First you must create an account on GitHub. Once you have created an account send the\
    username (email address) to jb2ndr@ufl.edu so you can be added to the project.
 2. Wait until you recieve an invite.
