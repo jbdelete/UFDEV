@@ -54,6 +54,7 @@ function P = AddParticle(obj,X,Y,Z,R,vx,vy,vz,seq,accr,acca,substance)
     obj.p(P).rx                 = X;
     obj.p(P).ry                 = Y;
     obj.p(P).rz                 = Z;
+    obj.p(P).vecp               = [X,Y,Z];
     obj.p(P).seq                = seq;
     % Assign whole number locations
     obj.p(P).xpos               = uint32(X);
@@ -70,6 +71,7 @@ function P = AddParticle(obj,X,Y,Z,R,vx,vy,vz,seq,accr,acca,substance)
     obj.p(P).vx                 = vx;
     obj.p(P).vy                 = vy;
     obj.p(P).vz                 = vz;
+    obj.p(P).vecv               = [vx,vy,vz];
     obj.p(P).ptype              = 0;
    
     

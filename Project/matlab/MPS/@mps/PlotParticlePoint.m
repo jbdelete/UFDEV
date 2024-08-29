@@ -30,10 +30,10 @@
 function PlotParticlePoint(obj)
 % CalcAccel(obj,P)
 % P =   Particle number
-    hold on
+    %hold on
         for P = 1:obj.ptot-1
             plot3(obj.p(P).rx,obj.p(P).ry,obj.p(P).rz,".r");
         end
-    hold off
+    %hold off
 
 end

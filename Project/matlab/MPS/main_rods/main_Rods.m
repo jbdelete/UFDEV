@@ -2,7 +2,6 @@ clc
 clear all
 close all
 clf
-[pfxdrv,pfxdir] = addPathCD('matlab/MPS/main');
 
 plot_type = 1;
 do_plot = true;

@@ -33,9 +33,11 @@ function outstruct = StructParticle()
 			    'pnum',			    0,...   % Particle number.
                 'rnum',             0,...   % Rod Number
                 'inrnum',           0,...  % in Rod number
+                'vecp',               [0.0,0.0,0.0],...
 				'rx',               0,...   % float x position
                 'ry',               0,...   % float y Position
                 'rz',               0,...   % float z Position
+                'vecv',               [0.0,0.0,0.0],...
 				'vx',               0.0,...   % x velocity  
                 'vy',               0.0,...   % y velocity  
                 'vz',               0.0,...   % z velocity  
@@ -46,7 +48,9 @@ function outstruct = StructParticle()
                 'ypos',             0,...   % uint y Position
                 'zpos',             0,...   % uint z Position
                	'color',			[0.0,1.0,1.0],...
-				'molar_matter',		0.0,...
+				'molar_matter',		0.0,... %
+                'mass',             0.0,... % mass kg  
+                'vecomega',          [0.0,0.0,0.0],...
                 'ang_xy',           0.0,... % xy plane angle for velocity
                 'ang_yz',           0.0,... % yz plane angle for velocity
                 'ang_xz',           0.0,... % xz plane angle for velocity

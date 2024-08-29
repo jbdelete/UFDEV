@@ -39,9 +39,6 @@ function PlotParticleNum(obj,P,PrintNum)
     y = y * radius;
     z = z * radius;
     % Translate sphere to new location.
-    if(P==54)
-        1;
-    end
     cllr = obj.p(P).color;
     if  obj.p(P).cflg > 0 
         cllr = [1.0,1.0,1.0];
@@ -51,7 +48,9 @@ if 0
         cllr = [1.0,1.0,0.0];
     end
 end
-
+    obj.p(P).rx=obj.p(P).vecp(1);
+    obj.p(P).ry=obj.p(P).vecp(2);
+    obj.p(P).rz=obj.p(P).vecp(3);
     %vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],[obj.p(P).nrx, obj.p(P).nrx, obj.p(P).nrx]);
     % Plot as surface.
    % h = surf(x+obj.p(P).rx,y+obj.p(P).ry,z+obj.p(P).rz,'FaceColor',cllr,'FaceAlpha',0.5,'LineStyle',"none") ;

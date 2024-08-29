@@ -1,35 +1,27 @@
-function [velF,velT] = CalcMom(P1,P2)
+function [velF,velT] = CalcMomP(obj,P1,P2,dsq,rsq)
 
     
-    xT = InPosF(1);
-    yT = InPosF(2);
-    zT = InPosF(3);
-	
-	xP = InPosT(1);
-    yP = InPosT(2);
-    zP = InPosT(3);
-
-    x = [xP-xT,yP-yT,zP-zT];
-        
+    
+    x = P1.vecp-P2.vecp;
     x = x/norm(x);
-    v1 = InVelF;
+    v1 = P1.vecv;
     x1 = dot(x,v1);
     v1x = x * x1;
     v1y = v1 - v1x;
     
 
     x = x*-1;
-    v2 = InVelT;
+    v2 = P2.vecv;
     x2 = dot(x,v2);
     v2x = x * x2;
     v2y = v2 - v2x;
-    
+    m1 = P1.mass;
+    m2 = P2.mass;
 
     velF = v1x*(m1-m2)/(m1+m2) + v2x*(2*m2)/(m1+m2) + v1y;
-    
-    
     velT = v2x*(m2-m1)/(m1+m2) + v1x*(2*m1)/(m1+m2) + v2y;
-    
 
+  
+    
 
 end

@@ -1,4 +1,4 @@
-function colCount = CountCollisions(obj)
+function [colCount, dsq, rsq] = CountCollisions(obj)
     
     collisionCount = 0;
     for ii=1:obj.ptot-1
