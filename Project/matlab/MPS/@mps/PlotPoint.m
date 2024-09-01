@@ -41,7 +41,17 @@ function PlotPoint(obj,rx,ry,rz,radius,CLR)
     z = z * radius;
     % Translate sphere to new location.
     % Plot as surface.
-    h = surf(x+rx,y+ry,z+rz,'FaceColor',CLR,'FaceAlpha',1.0);%,'LineStyle',"none") ;
+    h = surf(x+rx,y+ry,z+rz,'FaceColor',CLR,'FaceAlpha',1.0,'LineStyle',"none") ;
+if 0
+    shading faceted
+    lightangle(40,120)
+    h.FaceLighting = 'flat';
+    h.AmbientStrength = 0.6;
+    h.DiffuseStrength = 0.3;
+    h.SpecularStrength = 0.1;
+    h.SpecularExponent = 2;
+    h.BackFaceLighting = 'unlit';
+end
     if 0 %======================== EVAL-DBG =====================
          t=text(rx,ry+radius+0.03,rz,sprintf('%d',P));
         t.FontSize = 14;

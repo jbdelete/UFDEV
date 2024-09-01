@@ -28,18 +28,20 @@
 %*
 %*
 %******************************************************************/
-function [H,sideLen] =  plotVoxelSide(obj,cover,PlotAxis,sideleng,H)
+function [H,sideLen] =  plotVoxelSide(obj,PlotAxis,sideleng,H)
+    cover = 1;
     rng(0,'twister');
     a   = 0.0;
     b   = 1.0;
-    H = 0;
-    H = figure(1);
-    clf
-    hold on
-    if 1
-    for P = 1:obj.ptot-1
-        obj.PlotParticle(P);
+    if(H~= 0)
+        H = figure(1);
+        clf
+        hold on
     end
+    if 1
+        for P = 1:obj.ptot-1
+            obj.PlotParticle(P);
+        end
     end
     if 0
     for P = 1:obj.ptot-1
@@ -71,16 +73,16 @@ function [H,sideLen] =  plotVoxelSide(obj,cover,PlotAxis,sideleng,H)
         [obj.p(cover).rx-obj.p(cover).radius,...
         obj.p(cover).ry-obj.p(cover).radius,...
         obj.p(cover).rz-obj.p(cover).radius],0.3,[0.0,0.0,1.0]);
-        loc(1,:) = [cx+R,cy+R,cz+R];
-        loc(2,:) = [cx-R,cy+R,cz+R];
-        loc(3,:) = [cx+R,cy-R,cz+R];
-        loc(4,:) = [cx-R,cy-R,cz-R];
-        loc(5,:) = [cx+R,cy+R,cz-R];
-        loc(6,:) = [cx-R,cy-R,cz+R];
-        loc(7,:) = [cx-R,cy+R,cz-R];
-        loc(8,:) = [cx+R,cy-R,cz-R];
+        loc(1,:) = [cx+R,cy+R,cz+R];c(1) = "[+,+,+]";pc(1,:) = [0.03,0.01,0.01];
+        loc(2,:) = [cx-R,cy+R,cz+R];c(2) = "[-,+,+]";pc(2,:) = [0.015,0.01,0.015];
+        loc(3,:) = [cx+R,cy-R,cz+R];c(3) = "[+,-,+]";pc(3,:) = [0.01,0.01,0.015];
+        loc(4,:) = [cx-R,cy-R,cz-R];c(4) = "[-,-,-]";pc(4,:) = [-0.01,0.01,0.005];
+        loc(5,:) = [cx+R,cy+R,cz-R];c(5) = "[+,+,-]";pc(5,:) = [0.03,0.01,0.01];
+        loc(6,:) = [cx-R,cy-R,cz+R];c(6) = "[-,-,+]";pc(6,:) = [0.01,0.01,0.015];
+        loc(7,:) = [cx-R,cy+R,cz-R];c(7) = "[-,+,-]";pc(7,:) = [-0.01,0.01,0.005];
+        loc(8,:) = [cx+R,cy-R,cz-R];c(8) = "[+,-,-]";pc(8,:) = [0.03,0.01,0.005];
         for ii = 1:8
-           obj.PlotPoint(loc(ii,1),loc(ii,2),loc(ii,3),0.01,[1.0,0.0,0.0]);
+           obj.plotCorners(loc(ii,1),loc(ii,2),loc(ii,3),c(ii),pc(ii,:));
         end
     end
     
@@ -95,13 +97,11 @@ function [H,sideLen] =  plotVoxelSide(obj,cover,PlotAxis,sideleng,H)
             end
         end
     end
-    if (PlotAxis == true)
-        obj.plotCenters(0.5,1.5,0.5);
+    
+    axis off
+    if(H~= 0)
+        hold off
     end
-    xlabel('X');
-    ylabel('Y');
-    zlabel('Z');
-    grid on
    % axis 'padded';
   %  axis 'square';
 

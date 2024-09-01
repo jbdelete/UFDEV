@@ -113,6 +113,18 @@ classdef (ConstructOnLoad=true) mps  < handle
 			SideLen			= 0;
 			cdensity		= 0;
             
+			FACET  = 1;
+			
+			shdType = 0;
+			shadingFlag		= false;	
+			shadingType = 0;
+			lightangle = [40,120];
+			FaceLighting = 'flat';
+			AmbientStrength = 0.2;
+			DiffuseStrength = 0.3;
+			SpecularStrength = 0.9;
+			SpecularExponent = 25;
+			BackFaceLighting = 'unlit';
 
 			
         end 

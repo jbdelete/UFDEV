@@ -32,7 +32,7 @@ function PlotParticle(obj,P)
 % P =   Particle number
     
     % Make unit sphere
-    [x,y,z] = sphere;
+    [x,y,z] = sphere(200);
     % Scale to desire radius.
     radius = obj.p(P).radius;
     x = x * radius;
@@ -52,11 +52,27 @@ if 0
     end
 end
 
-    %vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],[obj.p(P).nrx, obj.p(P).nrx, obj.p(P).nrx]);
-    % Plot as surface.
-   % h = surf(x+obj.p(P).rx,y+obj.p(P).ry,z+obj.p(P).rz,'FaceColor',cllr,'FaceAlpha',0.5,'LineStyle',"none") ;
+if obj.shadingFlag == true
+    if obj.shadingType == 1
+    shading 'faceted'
+    end
+     h = surf(x+obj.p(P).rx,y+obj.p(P).ry,z+obj.p(P).rz,...
+            'FaceColor',cllr,...
+            'FaceAlpha',1.0,...
+            'LineStyle',"none") ;
+
+    lightangle(40,120)
+    h.FaceLighting = obj.FaceLighting;
+    h.AmbientStrength = obj.AmbientStrength;
+    h.DiffuseStrength = obj.DiffuseStrength;
+    h.SpecularStrength = obj.SpecularStrength;
+    h.SpecularExponent = obj.SpecularExponent;
+    h.BackFaceLighting = obj.BackFaceLighting;
+else
     h = surf(x+obj.p(P).rx,y+obj.p(P).ry,z+obj.p(P).rz,'FaceColor',cllr,'FaceAlpha',1.0) ;
-    if 1 %======================== EVAL-DBG =====================
+end
+   
+    if 0 %======================== EVAL-DBG =====================
         t=text(obj.p(P).rx+0.03, obj.p(P).ry+obj.p(P).radius+0.40,...
              obj.p(P).rz+obj.p(P).radius+0.10,sprintf('%d',P),'Color','black');
         t.FontSize = 18;

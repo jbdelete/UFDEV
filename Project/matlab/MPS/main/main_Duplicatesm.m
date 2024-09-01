@@ -1,7 +1,7 @@
 clc
 clear all
 close all
-[pfxdrv,pfxdir] = addPathCD('matlab/MPS/main');
+
 mcols = 0;
 
 mp      = mps();
@@ -22,14 +22,16 @@ sidelen  = 4;
 
 %sidelen  = 10;
 sl = sidelen-1;
+if 0
 mp.Corner3Sides(sl,0.1);
 mp.Corner2Sides(sl,0.1);
 mp.Center1Sides(sl,0.1);
+end
 totbparts = mp.ptot-1;
 
 
 
-if 0
+
 
 
 posx = 1.2;
@@ -37,7 +39,7 @@ posy = 1.2;
 posz = 1.2;
 picnt = 0;
 endcount = 4;
-
+if 0
 for layers = 1:endcount
     posz = posz+0.45;
     posx = 1.2;
@@ -111,9 +113,9 @@ ary = 1;
 fprintf('Total All particles:%d, Total Boundary parts %d, Total non boundary %d,Sidelength %d\r\n',...
 mp.ptot-1,totbparts,mp.ptot-1-totbparts,64)
 
-dirFile = sprintf("%s/%s/%s",pfxdrv,"RCCDData","perfdataM");
+dirFile = sprintf("%s/%s/%s","J:","RCCDData","perfdataV");
 
-flnm = "CubeBoundaryTest";
+flnm = "CubeDulicatesTest";
 mp.SaveDataWTSTV2(dirFile,... % directory
                 flnm,... % file name without suffix
                 5,...
