@@ -1,22 +1,28 @@
-function [colCount, dsq, rsq] = CountCollisions(obj)
+function [colCount,colAry, dsq, rsq] = CountCollisions(obj)
     
     collisionCount = 0;
+colary = [];
     for ii=1:obj.ptot-1
         
         for jj=1:obj.ptot-1
-            if(ii == 9 && jj == 191)
-                1;
+            if 0
+            if(obj.p(jj).rnum ~= obj.p(ii).rnum)
+                fprintf('Diff rod %d,%d\r\n',obj.p(ii).rnum,obj.p(jj).rnum);
             end
-            if (jj~=ii)
+            end
+            if (jj~=ii && obj.p(jj).rnum ~= obj.p(ii).rnum)
+                 if(ii == 3 && jj == 8)
+                1;
+                end
                   % Get target position
-                xT = obj.p(jj).rx;
-                yT = obj.p(jj).ry;
-                zT = obj.p(jj).rz;
+                xT = obj.p(jj).vecp(1);
+                yT = obj.p(jj).vecp(2);
+                zT = obj.p(jj).vecp(3);
             
                 % Get source position
-                xP = obj.p(ii).rx;
-                yP = obj.p(ii).ry;
-                zP = obj.p(ii).rz;
+                xP = obj.p(ii).vecp(1);
+                yP = obj.p(ii).vecp(2);
+                zP = obj.p(ii).vecp(3);
             
                 % Get distance between centers
                 dsq = (((xP-xT)^2+(yP-yT)^2+(zP-zT)^2));
@@ -28,6 +34,7 @@ function [colCount, dsq, rsq] = CountCollisions(obj)
                 if (dsq<rsq)
                     obj.p(jj).cflg = 1;
                     obj.p(ii).cflg = 1;
+                    colary(end+1,:) = [ii,jj]
                     collisionCount= collisionCount+1;
                     %if mod(ii,1000) == 0
                         
@@ -45,5 +52,6 @@ function [colCount, dsq, rsq] = CountCollisions(obj)
             end
         end
     end
+    colAry = colary;
     colCount=collisionCount;
 end

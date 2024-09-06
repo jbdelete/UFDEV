@@ -112,6 +112,7 @@ classdef (ConstructOnLoad=true) mps  < handle
 			totparts		= 0;
 			SideLen			= 0;
 			cdensity		= 0;
+            numberParticles = false;
             
 			FACET  = 1;
 			

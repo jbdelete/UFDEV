@@ -1,9 +1,9 @@
 clc
 clear all
 close all
-addPathCD('matlab/MPS/main')
 
-outdir = "../../../RCCDData/perfdataV/0000CollisionDataSet32X16X3";
+
+outdir = "../../../RCCDData/perfdataV/CubeDulicatesTest";
     mp      = mps();
     %newname = extractBefore(files(ii).name,".bin");
     [ret ] = mp.ParticleDataReadBIN("",outdir,1,64);
@@ -24,6 +24,7 @@ if 1
 end
 if 1
     clf
+    mp.numberParticles = true;
     mp.VPLType = mp.VPLTCUSTOM;
     mp.VViewAngle = [0,90]; %XY
     mp.VViewAngle = [-39.997172236503850,19.636503856041131]; %ANGLE

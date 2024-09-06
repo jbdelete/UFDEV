@@ -55,6 +55,7 @@ function P = AddParticleRod(obj,X,Y,Z,R,vx,vy,vz,seq,N,RN,accr,acca,substance)
     obj.p(P).rx                 = X;
     obj.p(P).ry                 = Y;
     obj.p(P).rz                 = Z;
+    obj.p(P).vecp               = [X,Y,Z];
     obj.p(P).seq                = seq;
     % Assign whole number locations
     obj.p(P).xpos               = uint32(X);
@@ -72,7 +73,7 @@ function P = AddParticleRod(obj,X,Y,Z,R,vx,vy,vz,seq,N,RN,accr,acca,substance)
     obj.p(P).vy                 = vy;
     obj.p(P).vz                 = vz;
     obj.p(P).ptype              = 0;
-   
+    obj.p(P).vecv               = [vx,vy,vz];
     
     obj.p(P).acc_r              = accr;
     obj.p(P).zlink             = zeros(8,4);

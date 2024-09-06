@@ -72,7 +72,8 @@ else
     h = surf(x+obj.p(P).rx,y+obj.p(P).ry,z+obj.p(P).rz,'FaceColor',cllr,'FaceAlpha',1.0) ;
 end
    
-    if 0 %======================== EVAL-DBG =====================
+    if obj.numberParticles == true
+    %======================== EVAL-DBG =====================
         t=text(obj.p(P).rx+0.03, obj.p(P).ry+obj.p(P).radius+0.40,...
              obj.p(P).rz+obj.p(P).radius+0.10,sprintf('%d',P),'Color','black');
         t.FontSize = 18;
