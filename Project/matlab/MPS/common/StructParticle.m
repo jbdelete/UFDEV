@@ -41,6 +41,8 @@ function outstruct = StructParticle()
 				'vx',               0.0,...   % x velocity  
                 'vy',               0.0,...   % y velocity  
                 'vz',               0.0,...   % z velocity  
+				'omega',			[0.0,0.0,0.0],...	
+				'phi',				[0.0,0.0,0.0],...
 				'ptype',			0,...	% 1 = bundary, 0 = partivle
                 'seq',              0.0,... %Sequence    
                 'inCol',            0,...   % in Collision flag
@@ -50,7 +52,6 @@ function outstruct = StructParticle()
                	'color',			[0.0,1.0,1.0],...
 				'molar_matter',		0.0,... %
                 'mass',             0.0,... % mass kg  
-                'vecomega',          [0.0,0.0,0.0],...
                 'ang_xy',           0.0,... % xy plane angle for velocity
                 'ang_yz',           0.0,... % yz plane angle for velocity
                 'ang_xz',           0.0,... % xz plane angle for velocity
@@ -72,8 +73,8 @@ function outstruct = StructParticle()
                 'cflg',             0,...       % In collision flag
                 'sang_xy',           0.0,...  % not used  
                 'sang_yz',           0.0,...  % "  
-                'sang_xz',           0.0,...  % "    
-                'wary',              [0,0,0,0,0,0,0,0],... % link list...
+                'sang_xz',           0.0,...  % "   
+				'wary',             [0,0,0,0,0,0,0,0],... % link list...
                 'vxary',            [],...  % Storage variable for ploting
                 'vyary',            [],...  % Storage variable for ploting
                 'vzary',            [],...  % Storage variable for ploting

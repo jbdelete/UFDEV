@@ -24,12 +24,14 @@ particleDistance = 0.25;
 dt = 0.1;
 pause on
 run('rods001.m')
+ vel1 = [];
+    vel2 = [];
+   
 for ii = 1:20
-    [mcols,colAry,dsq,rsq] = mp.CountCollisions();
-    mp.MoveRod(2,dt,mcols,colAry,dsq,rsq)
+  
     clf
     hold on
-    
+    [mcols,colAry,dsq,rsq] = mp.CountCollisions();
     for P = 1:mp.ptot-1
         if(AsPoints == false)
             mp.PlotParticleNumRod(P,true);
@@ -45,5 +47,13 @@ for ii = 1:20
     axis([10,12,14.5,16]);
     view([0 90]);
     hold off
+    if(mcols>0)
+        vel1 = mp.RodColResponse(colAry(1,:),dsq,rsq);
+        vel2 = mp.RodColResponse(colAry(2,:),dsq,rsq);
+    else
+    mp.MoveRod(1,dt,vel1);
+    mp.MoveRod(2,dt,vel2); 
+    end
+   
     pause(0.5)
 end

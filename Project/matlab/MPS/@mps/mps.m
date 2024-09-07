@@ -126,6 +126,7 @@ classdef (ConstructOnLoad=true) mps  < handle
 			SpecularStrength = 0.9;
 			SpecularExponent = 25;
 			BackFaceLighting = 'unlit';
+			hasOmega = false;
 
 			
         end 

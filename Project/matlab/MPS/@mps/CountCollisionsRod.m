@@ -12,8 +12,10 @@ function [colCount,colAry, dsq, rsq] = CountCollisions(obj)
                 fprintf('Diff rod %d,%d\r\n',obj.p(ii).rnum,obj.p(jj).rnum);
             end
             end
-            if (jj~=ii)
-                 
+            if (jj~=ii && obj.p(jj).rnum ~= obj.p(ii).rnum)
+                 if(ii == 3 && jj == 8)
+                1;
+                end
                   % Get target position
                 xT = obj.p(jj).vecp(1);
                 yT = obj.p(jj).vecp(2);
@@ -29,8 +31,10 @@ function [colCount,colAry, dsq, rsq] = CountCollisions(obj)
                 dr = obj.p(ii).radius+obj.p(jj).radius;
                 % Get combined radii
                 rsq = (dr^2);
-                obj.p(jj).cflg = 0;
-                obj.p(ii).cflg = 0;
+                %obj.p(jj).cflg = 0;
+                %obj.p(ii).cflg = 0;
+                dsq
+                rsq
                 % if distance is less than cobined radii there is a collision.
                 if (dsq<rsq)
                     obj.p(jj).cflg = 1;

@@ -82,12 +82,14 @@ function P = AddParticleRod(obj,X,Y,Z,R,vx,vy,vz,seq,N,RN,accr,acca,substance)
 
     obj.p(P).vtemp = norm([vx,vy,vz]);
 
-        for ii = 1:obj.tot_subst
-            if strcmp(substance,obj.sl(ii).name)
-                obj.p(P).sln = ii;
-                break;
-            end
+    for ii = 1:obj.tot_subst
+        if strcmp(substance,obj.sl(ii).name)
+            obj.p(P).sln = ii;
+            break;
         end
+    end
+    obj.p(P).mass = 1.0;
+
 %##################################################
 %$#$##############################################
         if 0

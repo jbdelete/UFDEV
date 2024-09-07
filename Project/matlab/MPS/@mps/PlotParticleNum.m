@@ -51,14 +51,21 @@ end
     obj.p(P).rx=obj.p(P).vecp(1);
     obj.p(P).ry=obj.p(P).vecp(2);
     obj.p(P).rz=obj.p(P).vecp(3);
-    %vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],[obj.p(P).nrx, obj.p(P).nrx, obj.p(P).nrx]);
-    % Plot as surface.
-   % h = surf(x+obj.p(P).rx,y+obj.p(P).ry,z+obj.p(P).rz,'FaceColor',cllr,'FaceAlpha',0.5,'LineStyle',"none") ;
-    h = surf(x+obj.p(P).rx,y+obj.p(P).ry,z+obj.p(P).rz,'FaceColor',cllr,'FaceAlpha',1.0) ;
+    if(obj.hasOmega == true)
+        %angvec = obj.p(P).vecp+obj.p(P).radius*obj.p(P).phi;
+        vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],...
+            [obj.p(P).phi(1),obj.p(P).phi(2),obj.p(P).phi(3)]);
+        plot3(obj.p(P).phi(1),obj.p(P).phi(2),obj.p(P).phi(3),'*r');
+    end
+
+
+  
+   h = surf(x+obj.p(P).rx,y+obj.p(P).ry,z+obj.p(P).rz,...
+        'FaceColor',cllr,'FaceAlpha',0.40) ;
     if PrintNum == true
         t=text(obj.p(P).rx+0.03, obj.p(P).ry+obj.p(P).radius+0.40,...
              obj.p(P).rz+obj.p(P).radius+0.10,sprintf('%d',P),'Color','black');
         t.FontSize = 18;
-    end %======================== EVAL-DBG =====================
- %vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],[obj.p(P).nrx, obj.p(P).nrx, obj.p(P).nrx]);
+    end 
+
 end

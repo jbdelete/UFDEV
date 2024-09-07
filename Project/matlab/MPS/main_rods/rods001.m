@@ -4,7 +4,7 @@
                     4.00,...    % Z Position
                     0.20,...    % Radius
                     0.00,...    % x vel
-                    0.00,...    % y vel
+                    0.05,...    % y vel
                     0.00,...    % z vel
                     particleDistance,...   %Interpatricle distance
                     rot,...     % rotation around center particle
