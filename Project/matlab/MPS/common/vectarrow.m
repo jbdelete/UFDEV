@@ -1,4 +1,4 @@
-function vectarrow(p0,p1)
+function H = vectarrow(p0,p1)
 %Arrowline 3-D vector plot.
 %   vectarrow(p0,p1) plots a line vector with arrow pointing from point p0
 %   to point p1. The function can plot both 2D and 3D vector with arrow
@@ -27,7 +27,7 @@ function vectarrow(p0,p1)
           x1 = p1(1);
           y1 = p1(2);
           z1 = p1(3);
-          plot3([x0;x1],[y0;y1],[z0;z1]);   % Draw a line between p0 and p1
+          H = plot3([x0;x1],[y0;y1],[z0;z1]);   % Draw a line between p0 and p1
           
           p = p1-p0;
           alpha = 0.1;  % Size of arrow head relative to the length of the vector

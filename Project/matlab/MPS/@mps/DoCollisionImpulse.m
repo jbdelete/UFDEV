@@ -37,24 +37,10 @@ pos0 = c0.vecp+vel0.*pt;
 pos1 = c1.vecp+vel1.*pt;
 
 omega0 = c0.omega+dot(r0_norm,J*N)/I0;
-omega1 = c1.omega+dot(r1_norm,J*N)/I1;
-
-xang = omega0(1);
-yang = omega0(2);
-zang = omega0(3);
-
-A = [cos(yang)*cos(zang),...
-     cos(xang)*sin(yang)+sin(yang)*sin(zang)*cos(zang),...
-     sin(yang)*sin(zang)-cos(xang)*sin(yang)*sin(zang);
-     -cos(yang)*sin(zang),...
-     cos(yang)*cos(zang)-sin(xang)*sin(yang)*sin(zang),...
-     sin(xang)*cos(zang)+cos(xang)*sin(yang)*sin(zang);...
-    sin(yang),-sin(xang)*cos(yang), cos(xang)*cos(yang)];
-    
-oldPhi0 = c0.phi;    
+omega1 = c1.omega+dot(r1_norm,J*N)/I0;
 
 
-oldPhi1 = c0.phi;
+
 
 
 end

@@ -32,8 +32,10 @@ mp.AddParticle( 1.0,... % real x position
 
 mp.AddParticle(1.45,0.5,0.5,0.20,-0.05,0.0,0.0,0,0.0,0.0,"He")
 
-mp.p(1).omega = [0.005,0.0,0.0];
-mp.p(2).omega = [0.005,0.0,0.0];
+mp.p(1).omega = [2.0,0.0,0.0];
+mp.p(2).omega = [2.0,0.0,0.0];
+mp.p(1).phi = mp.p(1).vecp+[1,1,1]*mp.p(1).radius;
+mp.p(2).phi = mp.p(2).vecp+[1,1,1]*mp.p(2).radius;
 
 
 mp.p(1).mass = 1.0;
@@ -42,7 +44,7 @@ mp.p(2).mass = 1.0;
 acc = 0.1;
 quit_flag = false;
 mp.hasOmega = true;
-for ii = 1:20
+for ii = 1:5
     ii
     clf
     hold on
@@ -53,7 +55,8 @@ for ii = 1:20
     if colCount > 0
     % Do the collision impulse resolution
         
-    [vel1,vel2,omega1,omega2,pos1,pos2,N] = mp.DoCollisionImpulse(  mp.p(1),... % Cube Struct
+    [vel1,vel2,omega1,omega2,pos1,pos2,N] =...
+         mp.DoCollisionImpulse(  mp.p(1),... % Cube Struct
                                     mp.p(2),... % Cube Struct.
                                     dsq,... % 3 vector 
                                     rsq,...
@@ -64,20 +67,37 @@ for ii = 1:20
     mp.p(2).vecv  = vel2;
     mp.p(1).omega = omega1;
     mp.p(2).omega = omega2;
-
     end
    
+   % mp.p(1).vecp = mp.p(1).vecp+mp.p(1).vecv*mp.dt;
+    %mp.p(2).vecp = mp.p(2).vecp+mp.p(2).vecv*mp.dt;
+    if 0
+    [phi0,phi1] = mp.DoAngVel(mp.p(1),mp.p(2));
+    mp.p(1).phi = phi0;
+    mp.p(2).phi = phi1;
+    fprintf('phi1:<%0.4f,%0.4f,%0.4f>phi2:<%0.4f,%0.4f,%0.4f>\r\n',...
+            mp.p(1).phi(1),mp.p(1).phi(2),mp.p(1).phi(3),...
+            mp.p(2).phi(1),mp.p(2).phi(2),mp.p(2).phi(3));
+    mp.p(1).phi = mp.p(1).phi+mp.p(1).omega*mp.dt;
+    mp.p(2).phi = mp.p(2).phi+mp.p(2).omega*mp.dt;
+    fprintf('phi1:<%0.4f,%0.4f,%0.4f>phi2:<%0.4f,%0.4f,%0.4f>\r\n',...
+            mp.p(1).phi(1),mp.p(1).phi(2),mp.p(1).phi(3),...
+            mp.p(2).phi(1),mp.p(2).phi(2),mp.p(2).phi(3));
    
-    mp.p(1).vecp = mp.p(1).vecp+mp.p(1).vecv*mp.dt;
-    mp.p(2).vecp = mp.p(2).vecp+mp.p(2).vecv*mp.dt;
-    
-    %mp.p(1).phi = mp.p(1).phi+mp.p(1).omega*mp.dt;
-    %mp.p(2).phi = mp.p(2).phi+mp.p(2).omega*mp.dt;
-    normp1 = mp.p(1).vecp/norm(mp.p(1).vecp);
-    normp2 = mp.p(2).vecp/norm(mp.p(2).vecp);
-    mp.p(1).phi = mp.p(1).vecp+normp1*mp.p(1).radius;
-    mp.p(2).phi = mp.p(2).vecp+normp2*mp.p(2).radius;
+    end
+    normp1 = 0.25;
+    normp2 = 0.25;
 
+    %mp.p(1).pltphi = mp.p(1).vecp+normp1*mp.p(1).radius;
+   % mp.p(2).pltphi = mp.p(2).vecp+normp2*mp.p(2).radius;
+    mp.p(1).pltphi = mp.p(1).phi;
+    mp.p(2).pltphi = mp.p(2).phi;
+    if 1
+    fprintf('pphi1:<%0.4f,%0.4f,%0.4f>, pphi2:<%0.4f,%0.4f,%0.4f>\r\n',...
+            mp.p(1).pltphi(1),mp.p(1).pltphi(2),mp.p(1).pltphi(3),...
+            mp.p(2).pltphi(1),mp.p(2).pltphi(2),mp.p(2).pltphi(3));
+    end
+    
     if 1
         % Plot as spheres
         for P = 1:mp.ptot-1
@@ -92,9 +112,11 @@ for ii = 1:20
     zlabel('Z');
     grid on
     axis square
-    axis ([0.0 3.0,0.0,3.0,0.0,1.0]);
+    axis ([0.0 3.0,0.0,1.0,0.0,1.0]);
     daspect([1,1,1]);
-    view([0 0]);
+    %view([-0.0875,41.039516129032258]);
+    %view([90,90]);
+    view([43.308740359897186,37.359640102827768]);
     hold off
     if (quit_flag == true)
         break;

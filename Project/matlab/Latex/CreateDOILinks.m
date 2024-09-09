@@ -149,7 +149,7 @@ while(1)
     end
     if (exitLast == 1)
         T = struct2table(s);
-        T = sortrows(T,1);
+       % T = sortrows(T,1);
         for ii = 1:size(T,1)
            fprintf(csvhndl,'%s',T{ii,2}); 
         end

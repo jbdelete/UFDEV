@@ -1,4 +1,4 @@
-function [colCount,colAry, dsq, rsq] = CountCollisions(obj)
+function [colCount,colAry, dsq, rsq] = CountRodCollisions(obj)
     
     collisionCount = 0;
     colary = [];
@@ -7,12 +7,12 @@ function [colCount,colAry, dsq, rsq] = CountCollisions(obj)
     for ii=1:obj.ptot-1
         
         for jj=1:obj.ptot-1
-            if 1
+            if 0
             if(obj.p(jj).rnum ~= obj.p(ii).rnum)
                 fprintf('Diff rod %d,%d\r\n',obj.p(ii).rnum,obj.p(jj).rnum);
             end
             end
-            if (jj~=ii)
+            if (jj~=ii && obj.p(jj).rnum ~= obj.p(ii).rnum)
                  
                   % Get target position
                 xT = obj.p(jj).vecp(1);

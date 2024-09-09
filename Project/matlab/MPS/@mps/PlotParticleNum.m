@@ -51,11 +51,14 @@ end
     obj.p(P).rx=obj.p(P).vecp(1);
     obj.p(P).ry=obj.p(P).vecp(2);
     obj.p(P).rz=obj.p(P).vecp(3);
+
     if(obj.hasOmega == true)
+        
         %angvec = obj.p(P).vecp+obj.p(P).radius*obj.p(P).phi;
-        vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],...
-            [obj.p(P).phi(1),obj.p(P).phi(2),obj.p(P).phi(3)]);
-        plot3(obj.p(P).phi(1),obj.p(P).phi(2),obj.p(P).phi(3),'*r');
+        H = vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],...
+            [obj.p(P).pltphi(1),obj.p(P).pltphi(2),obj.p(P).pltphi(3)]);
+        H.LineWidth = 2.0;
+        plot3(obj.p(P).pltphi(1),obj.p(P).pltphi(2),obj.p(P).pltphi(3),'*r');
     end
 
 
