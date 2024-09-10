@@ -32,8 +32,8 @@ mp.AddParticle( 1.0,... % real x position
 
 mp.AddParticle(1.45,0.5,0.5,0.20,-0.05,0.0,0.0,0,0.0,0.0,"He")
 
-mp.p(1).omega = [2.0,0.0,0.0];
-mp.p(2).omega = [2.0,0.0,0.0];
+mp.p(1).omega = [0.5,0.0,0.0];
+mp.p(2).omega = [0.5,0.0,0.0];
 mp.p(1).phi = mp.p(1).vecp+[1,1,1]*mp.p(1).radius;
 mp.p(2).phi = mp.p(2).vecp+[1,1,1]*mp.p(2).radius;
 
@@ -45,7 +45,7 @@ acc = 0.1;
 quit_flag = false;
 mp.hasOmega = true;
 for ii = 1:5
-    ii
+    ii;
     clf
     hold on
     
@@ -71,10 +71,10 @@ for ii = 1:5
    
    % mp.p(1).vecp = mp.p(1).vecp+mp.p(1).vecv*mp.dt;
     %mp.p(2).vecp = mp.p(2).vecp+mp.p(2).vecv*mp.dt;
-    if 0
+    if 1
     [phi0,phi1] = mp.DoAngVel(mp.p(1),mp.p(2));
-    mp.p(1).phi = phi0;
-    mp.p(2).phi = phi1;
+    %mp.p(1).phi = phi0;
+    %mp.p(2).phi = phi1;
     fprintf('phi1:<%0.4f,%0.4f,%0.4f>phi2:<%0.4f,%0.4f,%0.4f>\r\n',...
             mp.p(1).phi(1),mp.p(1).phi(2),mp.p(1).phi(3),...
             mp.p(2).phi(1),mp.p(2).phi(2),mp.p(2).phi(3));
@@ -90,7 +90,9 @@ for ii = 1:5
 
     %mp.p(1).pltphi = mp.p(1).vecp+normp1*mp.p(1).radius;
    % mp.p(2).pltphi = mp.p(2).vecp+normp2*mp.p(2).radius;
-    mp.p(1).pltphi = mp.p(1).phi;
+    mp.p(1).pltphi = mp.p(1).vecp+mp.p(1).radius*[sin(mp.p(1).phi(1)),...
+                                   cos(mp.p(1).phi(2)),...
+                                   sin(mp.p(1).phi(3))];
     mp.p(2).pltphi = mp.p(2).phi;
     if 1
     fprintf('pphi1:<%0.4f,%0.4f,%0.4f>, pphi2:<%0.4f,%0.4f,%0.4f>\r\n',...
