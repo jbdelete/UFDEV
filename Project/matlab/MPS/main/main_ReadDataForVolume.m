@@ -3,7 +3,7 @@ clear all
 close all
 
 
-outdir = "../../../RCCDData/perfdataV/CubeDulicatesTest";
+outdir = "../../../RCCDData/perfdataV/0000CollisionDataSet32X16X3";
     mp      = mps();
     %newname = extractBefore(files(ii).name,".bin");
     [ret ] = mp.ParticleDataReadBIN("",outdir,1,64);
@@ -18,7 +18,7 @@ outdir = "../../../RCCDData/perfdataV/CubeDulicatesTest";
     end
     mcols = 0;
 
-
+mp.shadingFlag = true;
 if 1
     mcols = mp.CountCollisions();
 end
