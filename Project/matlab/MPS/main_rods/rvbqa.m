@@ -1,6 +1,6 @@
 function [vprimex,vprimey,vprimez,vall,H] = rvbqa(p,center,diameter,ang,pltFlg)
 
-    pltFlg = false;
+    pltFlg = true;
     vprimex = [];
     vprimey = [];
     vprimez = [];

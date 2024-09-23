@@ -54,11 +54,26 @@ end
 
     if(obj.hasOmega == true)
         
-        %angvec = obj.p(P).vecp+obj.p(P).radius*obj.p(P).phi;
+        %norient = normalize(obj.p(P).orient);
+        norient = [1.0,0.0,0.0];
+        norient = obj.p(P).vecp + norient*radius;
         H = vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],...
-            [obj.p(P).pltphi(1),obj.p(P).pltphi(2),obj.p(P).pltphi(3)]);
+            [norient(1),norient(2),norient(3)]);
         H.LineWidth = 2.0;
-        plot3(obj.p(P).pltphi(1),obj.p(P).pltphi(2),obj.p(P).pltphi(3),'*r');
+        plot3(norient(1),norient(2),norient(3),'*r');
+        norient = [0.0,1.0,0.0];
+        norient = obj.p(P).vecp + norient*radius;
+        H = vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],...
+            [norient(1),norient(2),norient(3)]);
+        H.LineWidth = 2.0;
+        plot3(norient(1),norient(2),norient(3),'*r');
+        norient = [0.0,0.0,1.0];
+        norient = obj.p(P).vecp + norient*radius;
+        H = vectarrow([obj.p(P).rx,obj.p(P).ry,obj.p(P).rz],...
+            [norient(1),norient(2),norient(3)]);
+        H.LineWidth = 2.0;
+        plot3(norient(1),norient(2),norient(3),'*r');
+        
     end
 
 
